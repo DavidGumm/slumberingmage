@@ -13,7 +13,7 @@ config :slumberingmage,
 # Configures the endpoint
 config :slumberingmage, SlumberingmageWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "5gd+ZhDiyyKlFiFMfGaX7Bv8iCQgQGV1eggXVCxDCJxpS+uP7a6CEwQDHKWwbWwm",
+  secret_key_base: "bQPsfvwGyw2nDVdKpWT7R43JC5KfylruQVGrs4WpIx/47NQQPXRXgpXWXpiCI++w",
   render_errors: [view: SlumberingmageWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Slumberingmage.PubSub, adapter: Phoenix.PubSub.PG2]
 

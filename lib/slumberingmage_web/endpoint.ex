@@ -40,7 +40,7 @@ defmodule SlumberingmageWeb.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_slumberingmage_key",
-    signing_salt: "yzFd8Tk7"
+    signing_salt: "yISFfACJ"
 
   plug SlumberingmageWeb.Router
 end

@@ -3,7 +3,7 @@ use Mix.Config
 # Configure your database
 config :slumberingmage, Slumberingmage.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "Tru9qYluKvM*1dizOuOnVx%Z07GaVhx2",
   database: "slumberingmage_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
