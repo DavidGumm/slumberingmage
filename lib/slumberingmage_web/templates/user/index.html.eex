@@ -4,7 +4,8 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Age</th>
+      <th>Username</th>
+      <th>Password hash</th>
 
       <th></th>
     </tr>
@@ -13,7 +14,8 @@
 <%= for user <- @users do %>
     <tr>
       <td><%= user.name %></td>
-      <td><%= user.age %></td>
+      <td><%= user.username %></td>
+      <td><%= user.password_hash %></td>
 
       <td>
         <span><%= link "Show", to: Routes.user_path(@conn, :show, user) %></span>

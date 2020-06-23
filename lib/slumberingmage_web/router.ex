@@ -16,7 +16,12 @@ defmodule SlumberingmageWeb.Router do
   scope "/", SlumberingmageWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    resources "/articles", ArticleController, only: [:index]
+    resources "/article", ArticleController, only: [:show]
+    resources "/posts", PostController
+    resources "/users", UserController, only: [:index, :new, :create]
+    resources "/sessions", SessionController, only: [:new, :create, :delete]
+    get "/", ArticleController, :index
   end
 
   # Other scopes may use custom stacks.

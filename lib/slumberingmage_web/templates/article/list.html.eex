@@ -1,0 +1,1 @@
+<%= render "list_post.html", Map.put(assigns, :action, Routes.post_path(@conn, :update, @post)) %>

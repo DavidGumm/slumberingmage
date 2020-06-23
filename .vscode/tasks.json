@@ -4,6 +4,12 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "mix: db reset",
+      "type": "shell",
+      "command": "mix ecto.drop",
+      "problemMatcher": ["$erlang"]
+    },
+    {
       "label": "mix: db init",
       "type": "shell",
       "command": "mix ecto.setup",
@@ -31,6 +37,12 @@
       "label": "mix: run test",
       "type": "shell",
       "command": "mix phx.server test",
+      "problemMatcher": ["$erlang"]
+    },
+    {
+      "label": "mix: dependancy get",
+      "type": "shell",
+      "command": "mix deps.get",
       "problemMatcher": ["$erlang"]
     },
     {

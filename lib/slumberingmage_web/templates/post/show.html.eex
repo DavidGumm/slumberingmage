@@ -1,0 +1,7 @@
+<h1><%= link @post.title, to: Routes.article_path(@conn, :show, @post) %></h1>
+<div class="post-meta">Posted <%= @post.date_published %> by David Gumm; Published: <%= @post.published %></div>
+<div class="post-body"><%= raw @post.content %></div>
+<div class="post-excerpt">Excerpt: <%= raw @post.excerpt %></div>
+
+<span><%= link "Edit", to: Routes.post_path(@conn, :edit, @post) %></span>
+<span><%= link "Back", to: Routes.post_path(@conn, :index) %></span>

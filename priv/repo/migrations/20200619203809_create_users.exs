@@ -4,7 +4,8 @@ defmodule Slumberingmage.Repo.Migrations.CreateUsers do
   def change do
     create table(:users) do
       add :name, :string
-      add :age, :integer
+      add :username, :string, null: false
+      add :password_hash, :string
 
       timestamps()
     end

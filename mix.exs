@@ -20,7 +20,9 @@ defmodule Slumberingmage.MixProject do
   def application do
     [
       mod: {Slumberingmage.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools],
+      applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext,
+                 :phoenix_ecto, :postgrex, :ssl]
     ]
   end
 
@@ -46,7 +48,8 @@ defmodule Slumberingmage.MixProject do
       {:guardian, "~> 2.1"},
       {:ueberauth, "~> 0.6.3"},
       {:ueberauth_identity, "~> 0.3.0"},
-      #{:argon2_elixir, "~> 2.3"}
+      {:cloak, "1.0.2"},
+      {:earmark, "~> 1.4"}
     ]
   end
 

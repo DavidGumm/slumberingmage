@@ -1,14 +1,14 @@
 defmodule SlumberingmageWeb.UserControllerTest do
   use SlumberingmageWeb.ConnCase
 
-  alias Slumberingmage.Accounts
+  alias Slumberingmage.CreateUser
 
-  @create_attrs %{age: 42, name: "some name"}
-  @update_attrs %{age: 43, name: "some updated name"}
-  @invalid_attrs %{age: nil, name: nil}
+  @create_attrs %{name: "some name", password_hash: "some password_hash", username: "some username"}
+  @update_attrs %{name: "some updated name", password_hash: "some updated password_hash", username: "some updated username"}
+  @invalid_attrs %{name: nil, password_hash: nil, username: nil}
 
   def fixture(:user) do
-    {:ok, user} = Accounts.create_user(@create_attrs)
+    {:ok, user} = CreateUser.create_user(@create_attrs)
     user
   end
 
