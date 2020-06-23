@@ -8,7 +8,8 @@ defmodule Slumberingmage.CreatePost.Post do
     field :excerpt, :string
     field :published, :boolean, default: false
     field :title, :string
-    field :url, :string
+    field :slug, :string
+    field :tags, {:array, :string}
 
     timestamps()
   end
@@ -16,7 +17,7 @@ defmodule Slumberingmage.CreatePost.Post do
   @doc false
   def changeset(post, attrs) do
     post
-    |> cast(attrs, [:title, :url, :content, :excerpt, :date_published, :published])
-    |> validate_required([:title, :url, :content, :excerpt, :published])
+    |> cast(attrs, [:title, :slug, :tags, :content, :excerpt, :date_published, :published])
+    |> validate_required([:title, :slug, :tags, :content, :excerpt, :published])
   end
 end

@@ -4,7 +4,7 @@ defmodule Slumberingmage.Repo.Migrations.CreatePosts do
   def change do
     create table(:posts) do
       add :title, :string
-      add :slug, :string
+      add :slug, :string, size: 100
       add :tags, {:array, :string}
       add :content, :text
       add :excerpt, :text
@@ -15,8 +15,8 @@ defmodule Slumberingmage.Repo.Migrations.CreatePosts do
       timestamps()
 
     end
-    create unique_index(:posts, [:slug], concurrently: true) do
-    end
+
+    create unique_index(:posts, [:slug], name: :post_slug_unique)
+
     end
   end
-end

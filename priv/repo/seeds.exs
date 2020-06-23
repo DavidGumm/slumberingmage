@@ -10,4 +10,20 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-Slumberingmage.Repo.insert!(%Slumberingmage.Users{ name: "admin", username: "admin@example.com", password_hash:"password" })
+alias Slumberingmage.CreateUser
+alias Slumberingmage.CreatePost
+
+Slumberingmage.CreateUser.create_user(%{
+  name: "admin",
+  username: "admin@example.com",
+  password_hash: "password"})
+
+Slumberingmage.CreatePost.create_post(%{
+  content: "New Landing",
+  date_published: DateTime.to_date(DateTime.utc_now()),
+  excerpt: "excerpt",
+  published: true,
+  title: "Landing",
+  slug: "landing",
+  tags: ["landing,first"]
+  })

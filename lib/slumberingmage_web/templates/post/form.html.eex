@@ -11,9 +11,9 @@
   <%= text_input f, :title %>
   <%= error_tag f, :title %>
 
-  <%= label f, :url %>
-  <%= text_input f, :url %>
-  <%= error_tag f, :url %>
+  <%= label f, :plug %>
+  <%= text_input f, :plug %>
+  <%= error_tag f, :plug %>
 
   <%= label f, :tags %>
   <%= text_input f, :tags %>

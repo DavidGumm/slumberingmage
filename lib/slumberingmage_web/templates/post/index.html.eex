@@ -4,11 +4,12 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Url</th>
+      <th>slug</th>
       <th>Content</th>
       <th>Excerpt</th>
       <th>Date published</th>
       <th>Published</th>
+      <th>tags</th>
 
       <th></th>
     </tr>
@@ -17,11 +18,12 @@
 <%= for post <- @posts do %>
     <tr>
       <td><%= post.title %></td>
-      <td><%= post.url %></td>
+      <td><%= post.slug %></td>
       <td><%= post.content %></td>
       <td><%= post.excerpt %></td>
       <td><%= post.date_published %></td>
       <td><%= post.published %></td>
+      <td><%= post.tags %></td>
 
       <td>
         <span><%= link "Show", to: Routes.post_path(@conn, :show, post) %></span>

@@ -19,7 +19,7 @@ defmodule SlumberingmageWeb.Router do
     resources "/articles", ArticleController, only: [:index]
     resources "/article", ArticleController, only: [:show]
     resources "/posts", PostController
-    resources "/users", UserController, only: [:index, :new, :create]
+    resources "/users", UserController
     resources "/sessions", SessionController, only: [:new, :create, :delete]
     get "/", ArticleController, :index
   end
