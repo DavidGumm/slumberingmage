@@ -12,9 +12,10 @@
     <%= @user.username %>
   </li>
 
+
   <li>
-    <strong>Password hash:</strong>
-    <%= @user.password_hash %>
+    <strong>Email:</strong>
+    <%= @user.email %>
   </li>
 
 </ul>

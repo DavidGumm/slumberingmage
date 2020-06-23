@@ -11,6 +11,7 @@ defmodule Slumberingmage.Application do
       # Start the Ecto repository
       Slumberingmage.Repo,
       # Start the endpoint when the application starts
+      Slumberingmage.Vault,
       SlumberingmageWeb.Endpoint
       # Starts a worker by calling: Slumberingmage.Worker.start_link(arg)
       # {Slumberingmage.Worker, arg},
@@ -29,3 +30,5 @@ defmodule Slumberingmage.Application do
     :ok
   end
 end
+
+

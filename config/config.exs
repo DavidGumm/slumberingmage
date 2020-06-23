@@ -23,10 +23,28 @@ config :slumberingmage, SlumberingmageWeb.Endpoint,
   secret_key_base: "bQPsfvwGyw2nDVdKpWT7R43JC5KfylruQVGrs4WpIx/47NQQPXRXgpXWXpiCI++w",
   render_errors: [view: SlumberingmageWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Slumberingmage.PubSub, adapter: Phoenix.PubSub.PG2],
-  json_library: Jason,
+  json_library: Jason
+
+
+  config :slumberingmage, Slumberingmage.Vault,
   ciphers: [
-    default: {Cloak.Ciphers.AES.GCM, tag: "AES.GCM.V1", key: "3niudSwm413Pnvb1BXo3aEuorlFdYbeBHx8h7fP2CF4="}
+    default: {
+      Cloak.Ciphers.AES.GCM,
+      tag: "AES.GCM.V1",
+      key: Base.decode64!("3niudSwm413Pnvb1BXo3aEuorlFdYbeBHx8h7fP2CF4="),
+      # In AES.GCM, it is important to specify 12-byte IV length for
+      # interoperability with other encryption software. See this GitHub
+      # issue for more details:
+      # https://github.com/danielberkompas/cloak/issues/93
+      #
+      # In Cloak 2.0, this will be the default iv length for AES.GCM.
+      iv_length: 12
+    }
   ]
+
+  config :slumberingmage, Slumberingmage.Authentication,
+  issuer: "slumberingmage",
+  secret_key: "Z/Sd24XcYp4pNdcwiSobyXCLrGZVgrqeI5r5Xi8LDBvXHYzAC9xoNdM4/swEwRNa"
 
 # Configures Elixir's Logger
 config :logger, :console,

@@ -4,49 +4,55 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "mix: db reset",
+      "label": "mix: ecto -> reset",
       "type": "shell",
       "command": "mix ecto.drop",
       "problemMatcher": ["$erlang"]
     },
     {
-      "label": "mix: db init",
+      "label": "mix: ecto -> init",
       "type": "shell",
       "command": "mix ecto.setup",
       "problemMatcher": ["$erlang"]
     },
     {
-      "label": "mix: db migrate",
+      "label": "mix: ecto -> migrate",
       "type": "shell",
       "command": "mix ecto.migrate",
       "problemMatcher": ["$erlang"]
     },
     {
-      "label": "mix: run",
+      "label": "mix: run -> seed",
       "type": "shell",
-      "command": "mix phx.server",
+      "command": "mix run priv/repo/seeds.exs",
       "problemMatcher": ["$erlang"]
     },
     {
-      "label": "mix: run dev",
+      "label": "mix: run -> default",
+      "type": "shell",
+      "command": "mix phx.server",
+      "problemMatcher": ["erlang"]
+    },
+    {
+      "label": "mix: run -> dev",
       "type": "shell",
       "command": "mix phx.server dev",
       "problemMatcher": ["$erlang"]
     },
     {
-      "label": "mix: run test",
+      "label": "mix: run -> test",
       "type": "shell",
       "command": "mix phx.server test",
       "problemMatcher": ["$erlang"]
     },
     {
-      "label": "mix: dependancy get",
+      "label": "mix: update -> dependancy",
       "type": "shell",
       "command": "mix deps.get",
       "problemMatcher": ["$erlang"]
     },
     {
-      "label": "mix: compile",
+      "label": "mix: compile -> app",
       "type": "shell",
       "command": "mix deps.compile",
       "problemMatcher": ["$erlang"]

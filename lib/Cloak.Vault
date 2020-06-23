@@ -1,3 +1,0 @@
-defmodule MyApp.Vault do
-  use Cloak.Vault, otp_app: :my_app
-end

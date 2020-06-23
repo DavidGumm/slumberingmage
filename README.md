@@ -1,20 +1,13 @@
 # Slumberingmage
 
-To start your Phoenix server:
+[`localhost:4000`](http://localhost:4000)
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Install Node.js dependencies with `cd assets && npm install`
-  * Start Phoenix endpoint with `mix phx.server`
+## Refs
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+  * https://codewords.recurse.com/issues/five/building-a-web-framework-from-scratch-in-elixir
+  * https://thoughtbot.com/blog/authentication-in-elixir-web-applications-with-guardian-part-1
+  * https://thoughtbot.com/blog/authentication-in-elixir-web-applications-with-guardian-part-2
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
-
-## Learn more
-
-  * Official website: http://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
+  * https://hexdocs.pm/guardian/tutorial-start.html
+  * https://hexdocs.pm/cloak/1.0.2/install.html#content
+  * https://hexdocs.pm/cloak_ecto/1.0.1/install.html#content

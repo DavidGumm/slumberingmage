@@ -7,7 +7,3 @@ defmodule Slumberingmage do
   if it comes from the database, an external API or others.
   """
 end
-
-defmodule Slumberingmage.Vault do
-  use Cloak.Vault, otp_app: :Slumberingmage
-end

@@ -46,9 +46,11 @@ defmodule Slumberingmage.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:guardian, "~> 2.1"},
+      {:guardian_phoenix, "~> 2.0"},
       {:ueberauth, "~> 0.6.3"},
       {:ueberauth_identity, "~> 0.3.0"},
       {:cloak, "1.0.2"},
+      {:cloak_ecto, "~> 1.0.2"},
       {:earmark, "~> 1.4"}
     ]
   end

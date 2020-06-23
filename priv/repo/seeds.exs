@@ -10,20 +10,15 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-alias Slumberingmage.CreateUser
-alias Slumberingmage.CreatePost
+#alias Slumberingmage.CreatePost
 
-Slumberingmage.CreateUser.create_user(%{
-  name: "admin",
-  username: "admin@example.com",
-  password_hash: "password"})
-
-Slumberingmage.CreatePost.create_post(%{
-  content: "New Landing",
-  date_published: DateTime.to_date(DateTime.utc_now()),
-  excerpt: "excerpt",
-  published: true,
-  title: "Landing",
-  slug: "landing",
-  tags: ["landing,first"]
-  })
+# Slumberingmage.CreatePost.create_post(%{
+#   title: "Landing",
+#   slug: "landing",
+#   tags: ["landing,first"],
+#   content: "New Landing",
+#   excerpt: "excerpt",
+#   date_published: DateTime.to_date(DateTime.utc_now()),
+#   user_id: 1,
+#   published: true,
+#   })

@@ -18,20 +18,20 @@ defmodule Blog.Auth do
     |> configure_session(renew: true)
   end
 
-  def login_by_user_and_pass(conn, username, given_pass, opts) do
-    repo = Keyword.fetch!(opts, :repo)
-    user = repo.get_by(Blog.User, username: username)
+  # def login_by_user_and_pass(conn, username, given_pass, opts) do
+  #   repo = Keyword.fetch!(opts, :repo)
+  #   user = repo.get_by(Blog.User, username: username)
 
-    # cond do
-    #   user && checkpw(given_pass, user.password_hash) ->
-    #     {:ok, login(conn, user)}
-    #   user ->
-    #     {:error, :unauthorized, conn}
-    #   true ->
-    #     dummy_checkpw()
-    #     {:error, :not_found, conn}
-    # end
-  end
+  #   # cond do
+  #   #   user && checkpw(given_pass, user.password_hash) ->
+  #   #     {:ok, login(conn, user)}
+  #   #   user ->
+  #   #     {:error, :unauthorized, conn}
+  #   #   true ->
+  #   #     dummy_checkpw()
+  #   #     {:error, :not_found, conn}
+  #   # end
+  # end
 
   def logout(conn) do
     configure_session(conn, drop: true)

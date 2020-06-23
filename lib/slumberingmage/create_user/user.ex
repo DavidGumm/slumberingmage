@@ -1,11 +1,13 @@
 defmodule Slumberingmage.CreateUser.User do
   use Ecto.Schema
+
   import Ecto.Changeset
 
   schema "users" do
     field :name, :string
-    field :password_hash, :string
     field :username, :string
+    field :email, :string
+    field :password, Slumberingmage.Encrypted.Binary
 
     timestamps()
   end
@@ -13,7 +15,8 @@ defmodule Slumberingmage.CreateUser.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:name, :username, :password_hash])
-    |> validate_required([:name, :username, :password_hash])
+    |> cast(attrs, [:name, :username, :email, :password])
+    |> validate_required([:name, :username, :email, :password])
   end
+
 end
