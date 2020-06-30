@@ -1,12 +1,11 @@
-defmodule Slumberingmage.CreateUser do
+defmodule Slumberingmage.UserManager do
   @moduledoc """
-  The CreateUser context.
+  The UserManager context.
   """
 
   import Ecto.Query, warn: false
   alias Slumberingmage.Repo
-
-  alias Slumberingmage.CreateUser.User
+  alias Slumberingmage.UserManager.User
 
   @doc """
   Returns the list of users.
@@ -36,6 +35,22 @@ defmodule Slumberingmage.CreateUser do
 
   """
   def get_user!(id), do: Repo.get!(User, id)
+
+  @doc """
+  Gets a single user.
+
+  Raises `Ecto.NoResultsError` if the User does not exist.
+
+  ## Examples
+
+      iex> get_user_by_name!("username")
+      %User{}
+
+      iex> get_user_by_name!("non-username")
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_user_by_name!(name), do: Repo.get_by!(User, username: name)
 
   @doc """
   Creates a user.
@@ -100,5 +115,27 @@ defmodule Slumberingmage.CreateUser do
   """
   def change_user(%User{} = user) do
     User.changeset(user, %{})
+  end
+
+  import Ecto.Query, only: [from: 2]
+  require Logger
+
+  def authenticate_user(username, plain_text_password) do
+    Logger.info "Login atempt by #{username}"
+    user = Repo.get_by(User, username: username)
+    case user do
+      nil ->
+        Logger.info "#{username} not found"
+        {:error, :invalid_credentials}
+      user ->
+        Logger.info "#{username} found"
+        if user.password == plain_text_password do
+          Logger.info "#{username} password correct"
+          {:ok, user}
+        else
+          Logger.info "#{username} bad password"
+          {:error, :invalid_credentials}
+      end
+    end
   end
 end

@@ -1,37 +1,6 @@
-<section class="phx-hero">
-  <h1><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h1>
-  <p>A productive web framework that<br/>does not compromise speed or maintainability.</p>
-</section>
 <section>
-<h1>Testing info:</h1>
-<ul>
-  <li>
-    <strong>passsword:</strong>
-    <span><%=  elem(Slumberingmage.Vault.encrypt("password"), 1) %></span><br/>
-
-
-
-
-    <span>is_atom: <%= is_atom(Slumberingmage.Vault.encrypt("password")) %></span><br/>
-    <span>is_bitstring: <%=is_binary(Slumberingmage.Vault.encrypt("password")) %></span><br/>
-    <span>is_bitstring: <%=is_bitstring(Slumberingmage.Vault.encrypt("password")) %></span><br/>
-    <span>is_boolean: <%=is_boolean(Slumberingmage.Vault.encrypt("password")) %></span><br/>
-    <span>is_float: <%=is_float(Slumberingmage.Vault.encrypt("password")) %></span><br/>
-    <span>is_function: <%=is_function(Slumberingmage.Vault.encrypt("password")) %></span><br/>
-    <span>is_integer: <%=is_integer(Slumberingmage.Vault.encrypt("password")) %></span><br/>
-    <span>is_list: <%=is_list(Slumberingmage.Vault.encrypt("password")) %></span><br/>
-    <span>is_map: <%=is_map(Slumberingmage.Vault.encrypt("password")) %></span><br/>
-    <span>is_nil: <%=is_nil(Slumberingmage.Vault.encrypt("password")) %></span><br/>
-    <span>is_number: <%=is_number(Slumberingmage.Vault.encrypt("password")) %></span><br/>
-    <span>is_pid: <%=is_pid(Slumberingmage.Vault.encrypt("password")) %></span><br/>
-    <span>is_port: <%=is_port(Slumberingmage.Vault.encrypt("password")) %></span><br/>
-    <span>is_reference: <%=is_reference(Slumberingmage.Vault.encrypt("password")) %></span><br/>
-    <span>is_struct: <%=is_struct(Slumberingmage.Vault.encrypt("password")) %></span><br/>
-    <span>is_tuple: <%=is_tuple(Slumberingmage.Vault.encrypt("password")) %></span><br/>
-  </li>
-</ul>
-
-
-
-
+  <%= case File.read("README.md") do
+    {:ok, body}      -> raw(Earmark.as_html!(body))# do something with the `body`
+    {:error, reason} -> raw(Earmark.as_html!(reason))# handle the error caused by `reason`
+  end %>
 </section>

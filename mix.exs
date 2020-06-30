@@ -35,6 +35,7 @@ defmodule Slumberingmage.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:elixir_make, "~> 0.6.0"},
       {:phoenix, "~> 1.4.4"},
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_ecto, "~> 4.0"},
@@ -43,15 +44,11 @@ defmodule Slumberingmage.MixProject do
       {:phoenix_html, "~> 2.11"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.11"},
+      {:plug_cowboy, "~> 2.3"},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"},
+      {:earmark, "~> 1.4"},
       {:guardian, "~> 2.1"},
-      {:guardian_phoenix, "~> 2.0"},
-      {:ueberauth, "~> 0.6.3"},
-      {:ueberauth_identity, "~> 0.3.0"},
-      {:cloak, "1.0.2"},
-      {:cloak_ecto, "~> 1.0.2"},
-      {:earmark, "~> 1.4"}
+      {:comeonin, "~> 5.3"},
     ]
   end
 

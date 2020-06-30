@@ -4,14 +4,15 @@ defmodule Slumberingmage.Application do
   @moduledoc false
 
   use Application
+  require Logger
 
   def start(_type, _args) do
+    Logger.debug "Starting Application..."
     # List all child processes to be supervised
     children = [
       # Start the Ecto repository
       Slumberingmage.Repo,
       # Start the endpoint when the application starts
-      Slumberingmage.Vault,
       SlumberingmageWeb.Endpoint
       # Starts a worker by calling: Slumberingmage.Worker.start_link(arg)
       # {Slumberingmage.Worker, arg},
@@ -30,5 +31,3 @@ defmodule Slumberingmage.Application do
     :ok
   end
 end
-
-

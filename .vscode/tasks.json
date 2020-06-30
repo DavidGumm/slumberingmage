@@ -54,6 +54,12 @@
     {
       "label": "mix: compile -> app",
       "type": "shell",
+      "command": "mix compile",
+      "problemMatcher": ["$erlang"]
+    },
+    {
+      "label": "mix: compile -> dependancies",
+      "type": "shell",
       "command": "mix deps.compile",
       "problemMatcher": ["$erlang"]
     }

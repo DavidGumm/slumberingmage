@@ -3,10 +3,8 @@ defmodule Slumberingmage.Repo.Migrations.CreateUsers do
 
   def change do
     create table(:users) do
-      add :name, :string, null: false
-      add :username, :string, null: false
-      add :email, :string, null: false
-      add :password, :binary
+      add :username, :string
+      add :password, :string
 
       timestamps()
     end

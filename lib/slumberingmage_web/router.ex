@@ -13,32 +13,33 @@ defmodule SlumberingmageWeb.Router do
     plug :accepts, ["json"]
   end
 
-  pipeline :guardian do
-    plug SlumberingmageWeb.Authentication.Pipeline
+  pipeline :auth do
+    plug Slumberingmage.UserManager.Pipeline
   end
 
-  pipeline :browser_auth do
+  pipeline :ensure_auth do
     plug Guardian.Plug.EnsureAuthenticated
   end
 
-  scope "/", SlumberingmageWeb do
-    pipe_through [:browser]
+    # Maybe logged in scope
+    scope "/", SlumberingmageWeb do
+      pipe_through [:browser, :auth]
 
+      get "/", PageController, :index
 
-    resources "/articles", ArticleController, only: [:index]
-    resources "/article", ArticleController, only: [:show]
-    resources "/posts", PostController
-    resources "/users", UserController
-    resources "/sessions", SessionController, only: [:new, :create, :delete]
-    resources "/profile", ProfileController, only: [:show], singleton: true
+      get "/login", SessionController, :new
+      post "/login", SessionController, :login
+      get "/logout", SessionController, :logout
+    end
 
-    get "/", PageController, :index
+    # Definitely logged in scope
+    scope "/", SlumberingmageWeb do
+      pipe_through [:browser, :auth, :ensure_auth]
 
-    get "/register", RegistrationController, :new
-    post "/register", RegistrationController, :create
-    get "/login", SessionController, :new
-
-  end
+      get "/protected", PageController, :protected
+      get "/admin", PageController, :protected
+      get "/user", PageController, :protected
+    end
 
   # Other scopes may use custom stacks.
   # scope "/api", SlumberingmageWeb do

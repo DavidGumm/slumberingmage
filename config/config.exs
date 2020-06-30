@@ -10,6 +10,9 @@ use Mix.Config
 config :slumberingmage,
   ecto_repos: [Slumberingmage.Repo]
 
+  config :phoenix, :template_engines,
+  md: PhoenixMarkdown.Engine
+
 # Configures the endpoint
 config :slumberingmage, SlumberingmageWeb.Endpoint,
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
@@ -25,34 +28,40 @@ config :slumberingmage, SlumberingmageWeb.Endpoint,
   pubsub: [name: Slumberingmage.PubSub, adapter: Phoenix.PubSub.PG2],
   json_library: Jason
 
-
-  config :slumberingmage, Slumberingmage.Vault,
-  ciphers: [
-    default: {
-      Cloak.Ciphers.AES.GCM,
-      tag: "AES.GCM.V1",
-      key: Base.decode64!("3niudSwm413Pnvb1BXo3aEuorlFdYbeBHx8h7fP2CF4="),
-      # In AES.GCM, it is important to specify 12-byte IV length for
-      # interoperability with other encryption software. See this GitHub
-      # issue for more details:
-      # https://github.com/danielberkompas/cloak/issues/93
-      #
-      # In Cloak 2.0, this will be the default iv length for AES.GCM.
-      iv_length: 12
-    }
-  ]
-
-  config :slumberingmage, Slumberingmage.Authentication,
-  issuer: "slumberingmage",
-  secret_key: "Z/Sd24XcYp4pNdcwiSobyXCLrGZVgrqeI5r5Xi8LDBvXHYzAC9xoNdM4/swEwRNa"
-
 # Configures Elixir's Logger
+config :logger,
+format: "\n##### $time $metadata[$level] $levelpad$message\n",
+backends: [:console],
+compile_time_purge_matching: [
+  [level_lower_than: :debug]
+]
+
+# Our Console Backend-specific configuration
 config :logger, :console,
-  format: "$time $metadata[$level] $message\n",
-  metadata: [:request_id]
+format: "\n##### $time $metadata[$level] $levelpad$message\n",
+metadata: :all
+
+config :slumberingmage, Slumberingmage.UserManager.Guardian,
+  allowed_algos: ["HS512"],
+  issuer: "slumberingmage",
+  secret_key: "Z/Sd24XcYp4pNdcwiSobyXCLrGZVgrqeI5r5Xi8LDBvXHYzAC9xoNdM4/swEwRNa",
+  token_ttl: %{
+    "magic" => {30, :minutes},
+    "access" => {1, :days}
+  }
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
+
+config :slumberingmage, Ueberauth,
+  providers: [
+    identity: {Ueberauth.Strategy.Identity, [
+      param_nesting: "user",
+      request_path: "/register",
+      callback_path: "/register",
+      callback_methods: ["POST"]
+    ]}
+  ]
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
