@@ -15,14 +15,7 @@ config :slumberingmage,
 
 # Configures the endpoint
 config :slumberingmage, SlumberingmageWeb.Endpoint,
-  force_ssl: [rewrite_on: [:x_forwarded_proto]],
   http: [port: 4000],
-  url: [host: "localhost"],
-  https: [port: 4001,
-          otp_app: :slumberingmage,
-          keyfile: System.get_env("priv\\cert\\selfsigned_key.pem"),
-          certfile: System.get_env("priv\\cert\\selfsigned.pem")
-          ],
   secret_key_base: "bQPsfvwGyw2nDVdKpWT7R43JC5KfylruQVGrs4WpIx/47NQQPXRXgpXWXpiCI++w",
   render_errors: [view: SlumberingmageWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Slumberingmage.PubSub, adapter: Phoenix.PubSub.PG2],

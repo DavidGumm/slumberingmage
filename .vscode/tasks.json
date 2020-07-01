@@ -6,62 +6,70 @@
     {
       "label": "mix: ecto -> reset",
       "type": "shell",
-      "command": "mix ecto.drop",
-      "problemMatcher": ["$erlang"]
+      "command": "mix ecto.drop"
     },
     {
       "label": "mix: ecto -> init",
       "type": "shell",
-      "command": "mix ecto.setup",
-      "problemMatcher": ["$erlang"]
+      "command": "mix ecto.setup"
     },
     {
       "label": "mix: ecto -> migrate",
       "type": "shell",
-      "command": "mix ecto.migrate",
-      "problemMatcher": ["$erlang"]
+      "command": "mix ecto.migrate"
     },
     {
       "label": "mix: run -> seed",
       "type": "shell",
-      "command": "mix run priv/repo/seeds.exs",
-      "problemMatcher": ["$erlang"]
+      "command": "mix run priv/repo/seeds.exs"
     },
     {
-      "label": "mix: run -> default",
+      "label": "mix: run",
       "type": "shell",
-      "command": "mix phx.server",
-      "problemMatcher": ["erlang"]
+      "command": "mix phx.server"
     },
     {
       "label": "mix: run -> dev",
       "type": "shell",
-      "command": "mix phx.server dev",
-      "problemMatcher": ["$erlang"]
+      "command": "mix phx.server dev"
     },
     {
       "label": "mix: run -> test",
       "type": "shell",
-      "command": "mix phx.server test",
-      "problemMatcher": ["$erlang"]
+      "command": "mix phx.server test"
     },
     {
       "label": "mix: update -> dependancy",
       "type": "shell",
-      "command": "mix deps.get",
-      "problemMatcher": ["$erlang"]
+      "command": "mix deps.get"
     },
     {
       "label": "mix: compile -> app",
       "type": "shell",
-      "command": "mix compile",
-      "problemMatcher": ["$erlang"]
+      "command": "mix compile"
     },
     {
       "label": "mix: compile -> dependancies",
       "type": "shell",
-      "command": "mix deps.compile",
-      "problemMatcher": ["$erlang"]
+      "command": "mix deps.compile"
+    },
+    {
+      "type": "make",
+      "script": ".NOTPARALLEL",
+      "path": "deps/cowlib/",
+      "fileName": "Makefile",
+      "uri": {
+        "$mid": 1,
+        "fsPath": "c:\\Users\\gummd\\source\\repos\\slumberingmage\\deps\\cowlib\\Makefile",
+        "_sep": 1,
+        "path": "/c:/Users/gummd/source/repos/slumberingmage/deps/cowlib/Makefile",
+        "scheme": "file"
+      },
+      "problemMatcher": [
+        "cpp"
+      ],
+      "group": "build",
+      "label": "make: .NOTPARALLEL"
     }
   ]
 }

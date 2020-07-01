@@ -21,8 +21,7 @@ defmodule Slumberingmage.MixProject do
     [
       mod: {Slumberingmage.Application, []},
       extra_applications: [:logger, :runtime_tools],
-      applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext,
-                 :phoenix_ecto, :postgrex, :ssl]
+      applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext, :phoenix_ecto, :postgrex, :ssl]
     ]
   end
 

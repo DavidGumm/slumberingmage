@@ -10,7 +10,13 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :slumberingmage, SlumberingmageWeb.Endpoint,
-  url: [host: "example.com", port: 80],
+  url: [host: "localhost", port: 4000],
+  https: [
+    port: 4001,
+    cipher_suite: :strong,
+    certfile: "priv/cert/selfsigned.pem",
+    keyfile: "priv/cert/selfsigned_key.pem"
+  ],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production
