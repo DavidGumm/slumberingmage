@@ -46,7 +46,7 @@ defmodule Slumberingmage.MixProject do
       {:plug_cowboy, "~> 2.3"},
       {:jason, "~> 1.0"},
       {:earmark, "~> 1.4"},
-      {:guardian, "~> 2.1"},
+      {:guardian, "~> 2.0"},
       {:comeonin, "~> 5.3"},
     ]
   end
