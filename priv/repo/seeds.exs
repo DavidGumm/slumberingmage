@@ -10,4 +10,4 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-Slumberingmage.UserManager.create_user(%{username: "david", password: "password"})
+Slumberingmage.UserManager.create_user(%{username: "David Gumm", password: "password", email: "gumm.david@gmail.com", access: "admin,poster,commenter", image: "face.png", bio: "string"})

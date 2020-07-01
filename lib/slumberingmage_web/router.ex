@@ -30,16 +30,20 @@ defmodule SlumberingmageWeb.Router do
       get "/login", SessionController, :new
       post "/login", SessionController, :login
       get "/logout", SessionController, :logout
+
+      resources "/comments", CommentController
+      resources "/posts", PostController
+      resources "/users", UserController
     end
 
     # Definitely logged in scope
-    scope "/", SlumberingmageWeb do
-      pipe_through [:browser, :auth, :ensure_auth]
+    # scope "/", SlumberingmageWeb do
+    #   pipe_through [:browser, :auth, :ensure_auth]
 
-      get "/protected", PageController, :protected
-      get "/admin", PageController, :protected
-      get "/user", PageController, :protected
-    end
+    #   get "/protected", PageController, :protected
+    #   get "/admin", PageController, :protected
+    #   get "/user", PageController, :protected
+    # end
 
   # Other scopes may use custom stacks.
   # scope "/api", SlumberingmageWeb do

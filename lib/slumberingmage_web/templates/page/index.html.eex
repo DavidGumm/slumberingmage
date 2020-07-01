@@ -1,3 +1,8 @@
+<nav class="admin-left-nav">
+  <%= link "Posts", to: Routes.post_path(@conn, :index) %>
+  <%= link "Comments", to: Routes.comment_path(@conn, :index) %>
+  <%= link "Users", to: Routes.user_path(@conn, :index) %>
+</nav>
 <section>
   <%= case File.read("README.md") do
     {:ok, body}      -> raw(Earmark.as_html!(body))# do something with the `body`

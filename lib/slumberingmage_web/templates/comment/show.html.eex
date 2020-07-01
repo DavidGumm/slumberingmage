@@ -1,0 +1,28 @@
+<h1>Show Comment</h1>
+
+<ul>
+
+  <li>
+    <strong>Author:</strong>
+    <%= @comment.author %>
+  </li>
+
+  <li>
+    <strong>Date:</strong>
+    <%= @comment.date %>
+  </li>
+
+  <li>
+    <strong>Comments:</strong>
+    <%= @comment.comments %>
+  </li>
+
+  <li>
+    <strong>Avatar:</strong>
+    <%= @comment.avatar %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.comment_path(@conn, :edit, @comment) %></span>
+<span><%= link "Back", to: Routes.comment_path(@conn, :index) %></span>
