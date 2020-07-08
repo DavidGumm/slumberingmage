@@ -33,17 +33,17 @@ defmodule SlumberingmageWeb.Router do
 
       resources "/comments", CommentController
       resources "/posts", PostController
-      resources "/users", UserController
     end
 
-    # Definitely logged in scope
-    # scope "/", SlumberingmageWeb do
-    #   pipe_through [:browser, :auth, :ensure_auth]
+    #Definitely logged in scope
+    scope "/", SlumberingmageWeb do
+      pipe_through [:browser, :auth, :ensure_auth]
 
-    #   get "/protected", PageController, :protected
-    #   get "/admin", PageController, :protected
-    #   get "/user", PageController, :protected
-    # end
+      get "/admin", PageController, :protected
+      get "/account", AccountController, :show
+      get "/account/update", AccountController, :edit
+      resources "/users", UserController
+    end
 
   # Other scopes may use custom stacks.
   # scope "/api", SlumberingmageWeb do

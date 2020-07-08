@@ -3,11 +3,12 @@ defmodule Slumberingmage.Users.User do
   import Ecto.Changeset
 
   schema "users" do
-    field :access, :string
-    field :bio, :string
-    field :email, :string
-    field :image, :string
+    field :password, :string
     field :username, :string
+    field :email, :string
+    field :access, :string
+    field :image, :string
+    field :bio, :string
 
     timestamps()
   end
@@ -15,8 +16,8 @@ defmodule Slumberingmage.Users.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:username, :email, :access, :image, :bio])
-    |> validate_required([:username, :email, :access, :image, :bio])
+    |> cast(attrs, [:username, :password, :email, :access, :image, :bio])
+    |> validate_required([:username, :password, :email, :access, :image, :bio])
     |> unique_constraint(:username)
     |> unique_constraint(:email)
   end

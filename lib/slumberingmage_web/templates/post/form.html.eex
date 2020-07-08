@@ -4,32 +4,148 @@
       <p>Oops, something went wrong! Please check the errors below.</p>
     </div>
   <% end %>
+  <style>
+    .label-group{
+      display: block;
+      padding-bottom: 8px;
+    }
+    .label-group > label{
+      display: inline;
+      color: #fff;
+      background-color: #161f27;
+      font-family: inherit;
+      font-size: inherit;
+      margin-right: 0px;
+      margin-bottom: 6px;
+      padding: 10px;
+      border: none;
+      border-radius: 6px 0 0 6px;
+      outline: none;
+      border-right: 1px solid #2c3f50;
+      }
+    html > body > main > form > div.label-group > input:not([type=checkbox]):not([type=radio]), select{
+      margin-left: 0px;
+      border-radius: 0 6px 6px 0;
+      display: inline;
+    }
 
-  <%= label f, :slug %>
-  <%= text_input f, :slug %>
-  <%= error_tag f, :slug %>
+    html > body > main > form > div.label-group > div.checkbox > input[type=checkbox]:not([type=radio]){
+      visibility: hidden;
+      }
+    .checkbox {
+        width: 5rem;
+        height: 2rem;
+        background: #555;
+        margin: 1.2rem 1rem;
+        position: relative;
+        display: inline-block;
+      }
+      .checkbox label {
+        display: block;
+        width: 1.6rem;
+        height: 1.6rem;
+        transition: all .5s ease;
+        cursor: pointer;
+        position: absolute;
+        top: 0.2rem;
+        left: 0.2rem;
+        background: #ccc;
+      }
+      .checkbox input[type=checkbox]:checked + label {
+        left: 3.2rem;
+      }
+      .checkbox-holder{
 
-  <%= label f, :title %>
-  <%= text_input f, :title %>
-  <%= error_tag f, :title %>
+      }
 
-  <%= label f, :body %>
-  <%= textarea f, :body %>
-  <%= error_tag f, :body %>
 
-  <%= label f, :published %>
-  <%= checkbox f, :published %>
-  <%= error_tag f, :published %>
+  </style>
 
-  <%= label f, :cover %>
-  <%= text_input f, :cover %>
-  <%= error_tag f, :cover %>
-
-  <%= label f, :views %>
-  <%= number_input f, :views %>
-  <%= error_tag f, :views %>
-
+  <div class="label-group">
+    <%= label f, :slug %>
+    <%= text_input f, :slug %>
+    <%= error_tag f, :slug %>
+  </div>
+  <div class="label-group">
+    <%= label f, :title %>
+    <%= text_input f, :title %>
+    <%= error_tag f, :title %>
+  </div>
+  <div class="label-group">
+    <%= label f, :published %>
+    <div class="checkbox">
+      <%= checkbox f, :published %>
+      <label for="post_published"></label>
+    </div>
+    <%= error_tag f, :published %>
+  </div>
+  <div class="image-cover">
+    <%= label f, :cover %>
+    <%= text_input f, :cover %>
+    <%= error_tag f, :cover %>
+  </div>
+  <div class="label-group">
+    <%= label f, :tags %>
+    <%= Slumberingmage.InputHelpers.array_input f, :tags %>
+    <%= Slumberingmage.InputHelpers.array_add_button f, :tags %>
+    <%= error_tag f, :tags %>
+  </div>
+  <div class="label-group">
+    <%= label f, :views %>
+    <%= number_input f, :views %>
+    <%= error_tag f, :views %>
+  </div>
+  <div class="label-group">
+    <%= label f, :body %>
+    <%= textarea f, :body %>
+    <%= error_tag f, :body %>
+  </div>
+  <div class="edit-controls">
   <div>
     <%= submit "Save" %>
   </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+window.onload = () => {
+  const removeElement = ({target}) => {
+    let el = document.getElementById(target.dataset.id);
+    let li = el.parentNode;
+    li.parentNode.removeChild(li);
+  }
+  Array.from(document.querySelectorAll(".remove-form-field"))
+    .forEach(el => {
+      el.onclick = (e) => {
+        removeElement(e);
+      }
+    });
+  Array.from(document.querySelectorAll(".add-form-field"))
+    .forEach(el => {
+      el.onclick = ({target}) => {
+        let container = document.getElementById(target.dataset.container);
+        let index = container.dataset.index;
+        let newRow = target.dataset.prototype;
+        container.insertAdjacentHTML('beforeend', newRow.replace(/__name__/g, index));
+        container.dataset.index = parseInt(container.dataset.index) + 1;
+        container.querySelectorAll('a.remove-form-field').forEach(el => {
+          el.onclick = (e) => {
+            removeElement(e);
+          }
+        })
+      }
+    });
+}
+</script>
+
 <% end %>

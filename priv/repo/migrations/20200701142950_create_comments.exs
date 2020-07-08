@@ -5,7 +5,7 @@ defmodule Slumberingmage.Repo.Migrations.CreateComments do
     create table(:comments) do
       add :author, :string
       add :date, :naive_datetime
-      add :comments, :string
+      add :comments, :text
       add :avatar, :string
       add :post_id, references(:users, on_delete: :delete_all)
 

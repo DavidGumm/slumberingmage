@@ -8,7 +8,7 @@ defmodule Slumberingmage.Repo.Migrations.CreateUsers do
       add :email, :string
       add :access, :string
       add :image, :string
-      add :bio, :string
+      add :bio, :text
 
       timestamps()
     end
