@@ -4,13 +4,15 @@
       <p>Oops, something went wrong! Please check the errors below.</p>
     </div>
   <% end %>
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/pell/dist/pell.min.css">
+
   <style>
     .label-group{
       display: block;
       padding-bottom: 8px;
     }
     .label-group > label{
-      display: inline;
+      display: inline-block;
       color: #fff;
       background-color: #161f27;
       font-family: inherit;
@@ -32,32 +34,64 @@
     html > body > main > form > div.label-group > div.checkbox > input[type=checkbox]:not([type=radio]){
       visibility: hidden;
       }
+
+    .image-cover{
+      display: block;
+      padding-bottom: 8px;
+    }
+
     .checkbox {
-        width: 5rem;
-        height: 2rem;
-        background: #555;
-        margin: 1.2rem 1rem;
-        position: relative;
         display: inline-block;
       }
       .checkbox label {
         display: block;
         width: 1.6rem;
         height: 1.6rem;
-        transition: all .5s ease;
+        transition: all .15s ease;
         cursor: pointer;
-        position: absolute;
-        top: 0.2rem;
-        left: 0.2rem;
-        background: #ccc;
+        background: #222;
+        border-width: 5px 30px 5px 5px;
+        border-style: solid;
+        border-color: #333;
       }
       .checkbox input[type=checkbox]:checked + label {
-        left: 3.2rem;
+        border-width: 5px 5px 5px 30px;
+        background-color: #8fde8f;
       }
-      .checkbox-holder{
+      .label-array > ul > li > input:not([type=checkbox]):not([type=radio]) {
+        display: inline-block;
+        border-radius: 6px 0 0 6px;
+      }
+      .label-array > ul > li > input:not([type=checkbox]):not([type=radio])
 
+      .label-array > ul > li {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        margin-bottom: 6px;
       }
 
+
+      .label-array a {
+        display: inline-block;
+        color: #fff;
+        background-color: #161f27;
+        font-family: inherit;
+        font-size: inherit;
+        margin-right: 0px;
+        margin-bottom: 6px;
+        padding: 10px;
+        border: none;
+        border-radius: 0 6px 6px 0;
+        border-right: 1px solid #2c3f50;
+      }
+
+      .label-array a:focus {
+        box-shadow: 0 0 0 2px rgba(0,150,191,.67);
+      }
+
+      .display-none {
+        display:none;
+      }
 
   </style>
 
@@ -84,10 +118,10 @@
     <%= text_input f, :cover %>
     <%= error_tag f, :cover %>
   </div>
-  <div class="label-group">
+  <div class="label-group label-array">
     <%= label f, :tags %>
-    <%= Slumberingmage.InputHelpers.array_input f, :tags %>
     <%= Slumberingmage.InputHelpers.array_add_button f, :tags %>
+    <%= Slumberingmage.InputHelpers.array_input f, :tags %>
     <%= error_tag f, :tags %>
   </div>
   <div class="label-group">
@@ -95,8 +129,9 @@
     <%= number_input f, :views %>
     <%= error_tag f, :views %>
   </div>
-  <div class="label-group">
+  <div class="textarea-group">
     <%= label f, :body %>
+    <div id="pell_editor" for="#post_body"></div>
     <%= textarea f, :body %>
     <%= error_tag f, :body %>
   </div>
@@ -108,8 +143,28 @@
 
 
 
+  <script src="https://unpkg.com/pell"></script>
 
+<script>
+    document
+      .querySelectorAll('[data-tiny-editor]')
+      .forEach(editor =>
+        editor.addEventListener('input', e =>
+        document
+        .querySelector(e.target.getAttribute("for")).value = e.target.innerHTML
+      )
+    );
 
+    const post_body = document.getElementById('post_body');
+    const pell_editor = document.getElementById('pell_editor')
+    const editor = pell.init({
+      element: pell_editor,
+      onChange: html => post_body.value = html,
+      defaultParagraphSeparator: 'p',
+    });
+    editor.content.innerHTML = post_body.value
+
+</script>
 
 
 
