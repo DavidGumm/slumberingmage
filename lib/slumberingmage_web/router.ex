@@ -21,29 +21,30 @@ defmodule SlumberingmageWeb.Router do
     plug Guardian.Plug.EnsureAuthenticated
   end
 
-    # Maybe logged in scope
-    scope "/", SlumberingmageWeb do
-      pipe_through [:browser, :auth]
+  # Maybe logged in scope
+  scope "/", SlumberingmageWeb do
+    pipe_through [:browser, :auth]
 
-      get "/", PageController, :index
+    get "/", PageController, :index
 
-      get "/login", SessionController, :new
-      post "/login", SessionController, :login
-      get "/logout", SessionController, :logout
+    get "/login", SessionController, :new
+    post "/login", SessionController, :login
+    get "/logout", SessionController, :logout
+    get "/articles", ArticleController, :index
+    get "/article/:slug", ArticleController, :show
+  end
 
-      resources "/comments", CommentController
-      resources "/posts", PostController
-    end
+  # Definitely logged in scope
+  scope "/", SlumberingmageWeb do
+    pipe_through [:browser, :auth, :ensure_auth]
 
-    #Definitely logged in scope
-    scope "/", SlumberingmageWeb do
-      pipe_through [:browser, :auth, :ensure_auth]
-
-      get "/admin", PageController, :protected
-      get "/account", AccountController, :show
-      get "/account/update", AccountController, :edit
-      resources "/users", UserController
-    end
+    get "/admin", AdminController, :index
+    get "/account", AccountController, :show
+    get "/account/edit", AccountController, :edit
+    resources "/users", UserController
+    resources "/comments", CommentController
+    resources "/posts", PostController
+  end
 
   # Other scopes may use custom stacks.
   # scope "/api", SlumberingmageWeb do

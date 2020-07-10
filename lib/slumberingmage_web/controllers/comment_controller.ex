@@ -8,6 +8,7 @@ defmodule SlumberingmageWeb.CommentController do
     render(conn, "index.html", comments: comments)
   end
 
+  @spec new(Plug.Conn.t(), any) :: Plug.Conn.t()
   def new(conn, _params) do
     changeset = Comments.change_comment(%Comment{})
     render(conn, "new.html", changeset: changeset)

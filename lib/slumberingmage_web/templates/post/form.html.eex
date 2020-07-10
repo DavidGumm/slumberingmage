@@ -108,7 +108,7 @@
   <div class="label-group">
     <%= label f, :published %>
     <div class="checkbox">
-      <%= checkbox f, :published %>
+      <%= checkbox f, :published, class: "display-none" %>
       <label for="post_published"></label>
     </div>
     <%= error_tag f, :published %>
@@ -173,8 +173,8 @@
 
 
   <script>
-window.onload = () => {
-  const removeElement = ({target}) => {
+  window.onload = () => {
+    const removeElement = ({target}) => {
     let el = document.getElementById(target.dataset.id);
     let li = el.parentNode;
     li.parentNode.removeChild(li);
@@ -200,7 +200,7 @@ window.onload = () => {
         })
       }
     });
-}
+  }
 </script>
 
 <% end %>

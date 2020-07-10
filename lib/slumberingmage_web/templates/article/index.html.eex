@@ -1,0 +1,11 @@
+<%= for post <- @posts do %>
+  <article>
+    <div class="article-list-img">
+      <img src="images/posts/<%= post.cover %>" class="" style="" onerror="this.src='https://picsum.photos/1200/300'" />
+    </div>
+    <p><%= post.title %></p>
+    <p><%= raw post.body %></p>
+    <p><%= post.published %></p>
+    <span><%= link "Read", to: Routes.article_path(@conn, :show, post.slug) %></span>
+  </article>
+<% end %>

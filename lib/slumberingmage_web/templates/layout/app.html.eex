@@ -9,18 +9,20 @@
   </head>
   <body>
     <header>
-      <section class="container">
-        <nav role="navigation">
-          <a href="/login">Login</a>
-        </nav>
-        <h1 class="title">David's Elixir Blog</h1>
-      </section>
+      <h1 class="title">David's Elixir Blog</h1>
     </header>
-    <main role="main" class="container">
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-      <%= render @view_module, @view_template, assigns %>
-    </main>
+    <nav role="navigation">
+      <%= link "Home", to: Routes.page_path(@conn, :index) %>
+      <%= link "Articles", to: Routes.article_path(@conn, :index) %>
+      <%= link "Login", to: Routes.session_path(@conn, :login) %>
+    </nav>
+    <div>
+      <main role="main" class="container">
+        <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+        <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+        <%= render @view_module, @view_template, assigns %>
+      </main>
+    </div>
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>

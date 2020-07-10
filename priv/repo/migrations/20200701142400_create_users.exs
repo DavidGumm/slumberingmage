@@ -6,7 +6,7 @@ defmodule Slumberingmage.Repo.Migrations.CreateUsers do
       add :username, :string
       add :password, :string
       add :email, :string
-      add :access, :string
+      add :access, {:array, :string}, null: true
       add :image, :string
       add :bio, :text
 

@@ -4,12 +4,12 @@ defmodule Slumberingmage.Posts.Post do
 
   schema "posts" do
     field :body, :string
-    field :cover, :string
+    field :cover, :string, default: ""
     field :tags, {:array, :string}
     field :published, :boolean, default: false
     field :slug, :string
     field :title, :string
-    field :views, :integer
+    field :views, :integer, default: 0
     field :user_id, :id
 
     timestamps()

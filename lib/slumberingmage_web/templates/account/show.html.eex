@@ -1,23 +1,9 @@
-<h1>@user.username</h1>
-
-<ul>
-
-  <li>
-    <strong>Email:</strong>
-    <%= @user.email %>
-  </li>
-
-  <li>
-    <strong>Image:</strong>
-    <%= @user.image %>
-  </li>
-
-  <li>
-    <strong>Bio:</strong>
-    <%= @user.bio %>
-  </li>
-
-</ul>
-
-<span><%= link "Edit", to: Routes.account_path(@conn, :edit, @user) %></span>
-<span><%= link "Back", to: Routes.account_path(@conn, :index) %></span>
+<h1>@current_user.username</h1>
+<strong>Email:</strong>
+<%= @current_user.email %>
+<strong>Image:</strong>
+<%= @current_user.image %>
+<strong>Bio:</strong>
+<%= @current_user.bio %>
+<span><%= link "Edit", to: Routes.account_path(@conn, :edit, @current_user) %></span>
+<span><%= link "Back", to: Routes.account_path(@conn, :show) %></span>

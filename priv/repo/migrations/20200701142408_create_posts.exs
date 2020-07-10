@@ -8,7 +8,7 @@ defmodule Slumberingmage.Repo.Migrations.CreatePosts do
       add :body, :text
       add :published, :boolean, default: false, null: false
       add :cover, :string
-      add :tags, {:array, :string}
+      add :tags, {:array, :string}, null: true
       add :views, :integer
       add :user_id, references(:users, on_delete: :delete_all)
 

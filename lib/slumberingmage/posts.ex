@@ -38,6 +38,22 @@ defmodule Slumberingmage.Posts do
   def get_post!(id), do: Repo.get!(Post, id)
 
   @doc """
+  Gets a single post.
+
+  Raises `Ecto.NoResultsError` if the Post does not exist.
+
+  ## Examples
+
+      iex> get_post!(123)
+      %Post{}
+
+      iex> get_post!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_post_by_slug!(slug_name), do: Repo.get_by!(Post, slug: slug_name)
+
+  @doc """
   Creates a post.
 
   ## Examples
@@ -53,6 +69,24 @@ defmodule Slumberingmage.Posts do
     %Post{}
     |> Post.changeset(attrs)
     |> Repo.insert()
+  end
+
+  @doc """
+  Creates a post.
+
+  ## Examples
+
+      iex> create_post(%{field: value})
+      {:ok, %Post{}}
+
+      iex> create_post(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_post!(attrs \\ %{}) do
+    %Post{}
+    |> Post.changeset(attrs)
+    |> Repo.insert!()
   end
 
   @doc """

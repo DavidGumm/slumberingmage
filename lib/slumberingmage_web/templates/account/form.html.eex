@@ -1,0 +1,61 @@
+<%= form_for @changeset, @action, fn f -> %>
+<%= if @changeset.action do %>
+  <div class="alert alert-danger">
+    <p>Oops, something went wrong! Please check the errors below.</p>
+  </div>
+<% end %>
+<div class="label-group">
+  <%= label f, :username %>
+  <%= text_input f, :username %>
+  <%= error_tag f, :username %>
+</div>
+<div class="label-group">
+  <%= label f, :email %>
+  <%= text_input f, :email %>
+  <%= error_tag f, :email %>
+</div>
+<div class="label-group">
+  <%= label f, :image %>
+  <%= text_input f, :image %>
+  <%= error_tag f, :image %>
+</div>
+<div class="textarea-group">
+  <%= label f, :bio %>
+  <div id="pell_editor" for="#bio_body"></div>
+  <%= text_input f, :bio %>
+  <%= error_tag f, :bio %>
+</div>
+<div>
+  <%= submit "Save" %>
+</div>
+<script>
+  window.onload = () => {
+    const removeElement = ({target}) => {
+    let el = document.getElementById(target.dataset.id);
+    let li = el.parentNode;
+    li.parentNode.removeChild(li);
+  }
+  Array.from(document.querySelectorAll(".remove-form-field"))
+    .forEach(el => {
+      el.onclick = (e) => {
+        removeElement(e);
+      }
+    });
+  Array.from(document.querySelectorAll(".add-form-field"))
+    .forEach(el => {
+      el.onclick = ({target}) => {
+        let container = document.getElementById(target.dataset.container);
+        let index = container.dataset.index;
+        let newRow = target.dataset.prototype;
+        container.insertAdjacentHTML('beforeend', newRow.replace(/__name__/g, index));
+        container.dataset.index = parseInt(container.dataset.index) + 1;
+        container.querySelectorAll('a.remove-form-field').forEach(el => {
+          el.onclick = (e) => {
+            removeElement(e);
+          }
+        })
+      }
+    });
+  }
+</script>
+<% end %>
