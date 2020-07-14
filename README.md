@@ -1,6 +1,25 @@
+Table of Contents
+- [Links](#links)
+- [Tasks](#tasks)
+  - [Refs](#refs)
+
+
 # Links
 
 [`localhost:4000`](http://localhost:4000)
+
+
+# Tasks
+
+- [ ] Finish Intergrating [Guardian](https://hexdocs.pm/guardian/tutorial-start.html)
+- [ ] Somekind of hashing plug like [Comeonin](https://hexdocs.pm/Comeonin/)
+- [ ] Intergrate Uberauth, using Google, Reddit, FB, Linkedin, Twitter
+- [ ] Eliminate passwords in db
+- [ ] Test and verify [Earmark](https://hexdocs.pm/earmark/Earmark.html) intergration using only html and markup not as
+- [ ] Look into adding links table to auto update links if the front end changes.
+- [ ] Convert to unbrella app using JSON backend and Vue for the front end.
+- [ ] Fix issue with website restart and cookie not getting recycled.
+
 
 ## Refs
 
