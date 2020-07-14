@@ -21,7 +21,16 @@ defmodule Slumberingmage.MixProject do
     [
       mod: {Slumberingmage.Application, []},
       extra_applications: [:logger, :runtime_tools],
-      applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext, :phoenix_ecto, :postgrex, :ssl]
+      applications: [
+        :phoenix,
+        :phoenix_html,
+        :cowboy,
+        :logger,
+        :gettext,
+        :phoenix_ecto,
+        :postgrex,
+        :ssl
+      ]
     ]
   end
 
@@ -43,13 +52,13 @@ defmodule Slumberingmage.MixProject do
       {:phoenix_html, "~> 2.11"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.11"},
-      {:plug, "~> 1.0"},
+      {:plug, "~>1.10.0"},
       {:plug_crypto, "~> 1.0"},
-      {:plug_cowboy, "~> 1.0"},
+      {:plug_cowboy, "~> 2.0"},
       {:jason, "~> 1.0"},
       {:earmark, "~> 1.4"},
       {:guardian, "~> 2.0"},
-      {:comeonin, "~> 5.3"},
+      {:comeonin, "~> 5.3"}
     ]
   end
 
