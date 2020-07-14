@@ -6,6 +6,7 @@ defmodule SlumberingmageWeb.SessionController do
   def new(conn, _) do
     changeset = UserManager.change_user(%User{})
     maybe_user = Guardian.Plug.current_resource(conn)
+
     if maybe_user do
       redirect(conn, to: "/account")
     else
@@ -14,24 +15,30 @@ defmodule SlumberingmageWeb.SessionController do
   end
 
   def login(conn, %{"user" => %{"username" => username, "password" => password}}) do
-    auth = UserManager.authenticate_user(username, password)
-    auth |> login_reply(conn)
+    UserManager.authenticate_user(username, password)
+    |> login_reply(conn)
   end
 
   def logout(conn, _) do
     conn
-    |> Guardian.Plug.sign_out() #This module's full name is Auth.UserManager.Guardian.Plug,
-    |> redirect(to: "/login")   #and the arguments specfied in the Guardian.Plug.sign_out()
-  end                           #docs are not applicable here
+    # This module's full name is Auth.UserManager.Guardian.Plug,
+    |> Guardian.Plug.sign_out()
+
+    # and the arguments specfied in the Guardian.Plug.sign_out()
+    |> redirect(to: "/login")
+  end
+
+  # docs are not applicable here
 
   defp login_reply({:ok, user}, conn) do
     Guardian.Plug.sign_in(conn, user)
     |> put_flash(:info, "Welcome back #{user.username}.")
-    |> redirect(to: "/account")
+    |> redirect(to: "/")
   end
 
   defp login_reply({:error, reason}, conn) do
     conn
+    |> Guardian.Plug.sign_out()
     |> put_flash(:error, to_string(reason))
     |> new(%{})
   end

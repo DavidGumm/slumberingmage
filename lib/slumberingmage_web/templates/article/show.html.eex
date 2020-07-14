@@ -12,5 +12,4 @@
   </div>
   <h6>tags: <%= for tag <- @post.tags, do: " #{tag}," %></h6>
   </article>
-  <section class="comments">
-  </section>
+  <section class="comments"></section>

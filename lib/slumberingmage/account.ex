@@ -2,7 +2,7 @@ defmodule Slumberingmage.Accounts do
   import Ecto.Query, warn: false
   alias Slumberingmage.Repo
 
-  alias Slumberingmage.Users.User
+  alias Slumberingmage.{UserManager, UserManager.User}
 
   def update_user(%User{} = user, attrs) do
     user
