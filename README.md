@@ -17,7 +17,7 @@ Table of Contents
 
 - [ ] Build router tests
 - [ ] Finish integrating [Guardian](https://hexdocs.pm/guardian/tutorial-start.html)
-- [ ] Integrate Uberauth, using Google, Reddit, FB, Linkedin, Twitter
+- [ ] Integrate Ueberauth, using Google, Reddit, FB, Linkedin, Twitter
 - [ ] Eliminate passwords in database
 - [x] Test and verify [Earmark](https://hexdocs.pm/earmark/Earmark.html)
   - Earmark not parsing task list/does not support them. [Read more](https://github.com/pragdave/earmark/issues/126)
@@ -26,6 +26,7 @@ Table of Contents
 - [ ] Fix issue with website restart and cookie not getting recycled.
   - Not seeing a max age or expiration date on the cookie. Need to find a way to force the cookie to go away. This seems to stem from Plug.
   - Updated Plug to latest version, need to see if the issue is still happening.
+- [ ] Rename application to "new name".
 
 
 ## Refs
