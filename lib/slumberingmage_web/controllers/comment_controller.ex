@@ -1,17 +1,25 @@
 defmodule SlumberingmageWeb.CommentController do
   use SlumberingmageWeb, :controller
 
-  alias Slumberingmage.{Comments, Comments.Comment}
+  alias Slumberingmage.{Comments, Comments.Comment, UserManager.Guardian}
 
   def index(conn, _params) do
     comments = Comments.list_comments()
-    render(conn, "index.html", comments: comments)
+    current_user = Guardian.Plug.current_resource(conn)
+
+    conn
+    |> put_layout(Guardian.layout(current_user))
+    |> render("index.html", comments: comments, current_user: current_user)
   end
 
   @spec new(Plug.Conn.t(), any) :: Plug.Conn.t()
   def new(conn, _params) do
     changeset = Comments.change_comment(%Comment{})
-    render(conn, "new.html", changeset: changeset)
+    current_user = Guardian.Plug.current_resource(conn)
+
+    conn
+    |> put_layout(Guardian.layout(current_user))
+    |> render("new.html", changeset: changeset, current_user: current_user)
   end
 
   def create(conn, %{"comment" => comment_params}) do
@@ -22,19 +30,35 @@ defmodule SlumberingmageWeb.CommentController do
         |> redirect(to: Routes.comment_path(conn, :show, comment))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        current_user = Guardian.Plug.current_resource(conn)
+
+        conn
+        |> put_layout(Guardian.layout(current_user))
+        |> render("new.html", changeset: changeset, current_user: current_user)
     end
   end
 
   def show(conn, %{"id" => id}) do
     comment = Comments.get_comment!(id)
-    render(conn, "show.html", comment: comment)
+    current_user = Guardian.Plug.current_resource(conn)
+
+    conn
+    |> put_layout(Guardian.layout(current_user))
+    |> render("show.html", comment: comment, current_user: current_user)
   end
 
   def edit(conn, %{"id" => id}) do
     comment = Comments.get_comment!(id)
     changeset = Comments.change_comment(comment)
-    render(conn, "edit.html", comment: comment, changeset: changeset)
+    current_user = Guardian.Plug.current_resource(conn)
+
+    conn
+    |> put_layout(Guardian.layout(current_user))
+    |> render("edit.html",
+      comment: comment,
+      changeset: changeset,
+      current_user: current_user
+    )
   end
 
   def update(conn, %{"id" => id, "comment" => comment_params}) do
@@ -47,7 +71,15 @@ defmodule SlumberingmageWeb.CommentController do
         |> redirect(to: Routes.comment_path(conn, :show, comment))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "edit.html", comment: comment, changeset: changeset)
+        current_user = Guardian.Plug.current_resource(conn)
+
+        conn
+        |> put_layout(Guardian.layout(current_user))
+        |> render("edit.html",
+          comment: comment,
+          changeset: changeset,
+          current_user: current_user
+        )
     end
   end
 

@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>David's Elixir Blog</title>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
-    <script src="<%= Routes.static_path(@conn, "/js/app.js") %>" ></script>
   </head>
   <body>
     <header>
@@ -17,13 +16,17 @@
       <%= link "Post", to: Routes.post_path(@conn, :index) %>
       <%= link "Articles", to: Routes.article_path(@conn, :index) %>
       <%= link "Logout", to: Routes.session_path(@conn, :logout) %>
-      <%= link @current_user.username, to: Routes.account_path(@conn, :show) %>
+      <%= link "User #{@current_user.username}", to: Routes.user_path(@conn, :show) %>
     </nav>
     <main role="main" class="container">
+      <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+      <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+      <script>
+        const Editor = toastui.Editor;
+      </script>
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
       <%= render @view_module, @view_template, assigns %>
     </main>
-    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>

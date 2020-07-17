@@ -8,8 +8,9 @@
     </h5>
   </div>
   <div class="article-body">
-    <%= raw @post.body %>
+    <%= raw(Earmark.as_html!(@post.body)) %>
   </div>
   <h6>tags: <%= for tag <- @post.tags, do: " #{tag}," %></h6>
   </article>
+  <span><%= link "Back", to: Routes.article_path(@conn, :index) %></span>
   <section class="comments"></section>

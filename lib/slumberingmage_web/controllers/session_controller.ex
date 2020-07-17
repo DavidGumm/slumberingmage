@@ -8,7 +8,7 @@ defmodule SlumberingmageWeb.SessionController do
     maybe_user = Guardian.Plug.current_resource(conn)
 
     if maybe_user do
-      redirect(conn, to: "/account")
+      # redirect(conn, to: "/account")
     else
       render(conn, "new.html", changeset: changeset, action: Routes.session_path(conn, :login))
     end

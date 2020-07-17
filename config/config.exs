@@ -10,8 +10,7 @@ use Mix.Config
 config :slumberingmage,
   ecto_repos: [Slumberingmage.Repo]
 
-  config :phoenix, :template_engines,
-  md: PhoenixMarkdown.Engine
+config :phoenix, :template_engines, md: PhoenixMarkdown.Engine
 
 # Configures the endpoint
 config :slumberingmage, SlumberingmageWeb.Endpoint,
@@ -23,16 +22,11 @@ config :slumberingmage, SlumberingmageWeb.Endpoint,
 
 # Configures Elixir's Logger
 config :logger,
-format: "\n##### $time $metadata[$level] $levelpad$message\n",
-backends: [:console],
-compile_time_purge_matching: [
-  [level_lower_than: :debug]
-]
-
-# Our Console Backend-specific configuration
-config :logger, :console,
-format: "\n##### $time $metadata[$level] $levelpad$message\n",
-metadata: :all
+  format: "\n[$level] [$date $time] $levelpad$message$levelpad$metadata\n",
+  metadata: :all,
+  compile_time_purge_matching: [
+    [level_lower_than: :debug]
+  ]
 
 config :slumberingmage, Slumberingmage.UserManager.Guardian,
   allowed_algos: ["HS512"],
@@ -48,12 +42,14 @@ config :phoenix, :json_library, Jason
 
 config :slumberingmage, Ueberauth,
   providers: [
-    identity: {Ueberauth.Strategy.Identity, [
-      param_nesting: "user",
-      request_path: "/register",
-      callback_path: "/register",
-      callback_methods: ["POST"]
-    ]}
+    identity:
+      {Ueberauth.Strategy.Identity,
+       [
+         param_nesting: "user",
+         request_path: "/register",
+         callback_path: "/register",
+         callback_methods: ["POST"]
+       ]}
   ]
 
 # Import environment specific config. This must remain at the bottom

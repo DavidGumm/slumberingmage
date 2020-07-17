@@ -9,6 +9,32 @@ defmodule Slumberingmage.Posts do
   alias Slumberingmage.Posts.Post
 
   @doc """
+  Returns the list of posts and views.
+
+  ## Examples
+
+      iex> aggregate_post_views()
+      [%Post{}, ...]
+
+  """
+  def aggregate_post_views do
+    Repo.aggregate(Post, :count, :views)
+  end
+
+  @doc """
+  Returns an aggregate of posts and tags.
+
+  ## Examples
+
+      iex> aggregate_tags()
+      [%Post{}, ...]
+
+  """
+  def aggregate_tags do
+    Repo.aggregate(Post, :count, :tags)
+  end
+
+  @doc """
   Returns the list of posts.
 
   ## Examples

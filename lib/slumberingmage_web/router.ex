@@ -39,9 +39,9 @@ defmodule SlumberingmageWeb.Router do
     pipe_through [:browser, :auth, :ensure_auth]
 
     get "/admin", AdminController, :index
-    get "/account", AccountController, :show
-    get "/account/edit", AccountController, :edit
     resources "/users", UserController
+    get "/user", UserController, :show
+    get "/user/edit", UserController, :edit
     resources "/comments", CommentController
     resources "/posts", PostController
   end

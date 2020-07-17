@@ -1,206 +1,61 @@
 <%= form_for @changeset, @action, fn f -> %>
-  <%= if @changeset.action do %>
-    <div class="alert alert-danger">
-      <p>Oops, something went wrong! Please check the errors below.</p>
-    </div>
-  <% end %>
-  <link rel="stylesheet" type="text/css" href="https://unpkg.com/pell/dist/pell.min.css">
-
-  <style>
-    .label-group{
-      display: block;
-      padding-bottom: 8px;
-    }
-    .label-group > label{
-      display: inline-block;
-      color: #fff;
-      background-color: #161f27;
-      font-family: inherit;
-      font-size: inherit;
-      margin-right: 0px;
-      margin-bottom: 6px;
-      padding: 10px;
-      border: none;
-      border-radius: 6px 0 0 6px;
-      outline: none;
-      border-right: 1px solid #2c3f50;
-      }
-    html > body > main > form > div.label-group > input:not([type=checkbox]):not([type=radio]), select{
-      margin-left: 0px;
-      border-radius: 0 6px 6px 0;
-      display: inline;
-    }
-
-    html > body > main > form > div.label-group > div.checkbox > input[type=checkbox]:not([type=radio]){
-      visibility: hidden;
-      }
-
-    .image-cover{
-      display: block;
-      padding-bottom: 8px;
-    }
-
-    .checkbox {
-        display: inline-block;
-      }
-      .checkbox label {
-        display: block;
-        width: 1.6rem;
-        height: 1.6rem;
-        transition: all .15s ease;
-        cursor: pointer;
-        background: #222;
-        border-width: 5px 30px 5px 5px;
-        border-style: solid;
-        border-color: #333;
-      }
-      .checkbox input[type=checkbox]:checked + label {
-        border-width: 5px 5px 5px 30px;
-        background-color: #8fde8f;
-      }
-      .label-array > ul > li > input:not([type=checkbox]):not([type=radio]) {
-        display: inline-block;
-        border-radius: 6px 0 0 6px;
-      }
-      .label-array > ul > li > input:not([type=checkbox]):not([type=radio])
-
-      .label-array > ul > li {
-        margin-top: 0.5rem;
-        margin-bottom: 0.5rem;
-        margin-bottom: 6px;
-      }
-
-
-      .label-array a {
-        display: inline-block;
-        color: #fff;
-        background-color: #161f27;
-        font-family: inherit;
-        font-size: inherit;
-        margin-right: 0px;
-        margin-bottom: 6px;
-        padding: 10px;
-        border: none;
-        border-radius: 0 6px 6px 0;
-        border-right: 1px solid #2c3f50;
-      }
-
-      .label-array a:focus {
-        box-shadow: 0 0 0 2px rgba(0,150,191,.67);
-      }
-
-      .display-none {
-        display:none;
-      }
-
-  </style>
-
-  <div class="label-group">
+<%= if @changeset.action do %>
+  <div class="alert alert-danger">
+    <p>Oops, something went wrong! Please check the errors below.</p>
+  </div>
+<% end %>
+<div>
+  <div>
     <%= label f, :slug %>
-    <%= text_input f, :slug %>
+    <%= text_input f, :slug, placeholder: "slug" %>
     <%= error_tag f, :slug %>
-  </div>
-  <div class="label-group">
     <%= label f, :title %>
-    <%= text_input f, :title %>
+    <%= text_input f, :title, placeholder: "title" %>
     <%= error_tag f, :title %>
-  </div>
-  <div class="label-group">
+    <%= label f, :user_id %>
+    <%= select f, :user_id, Enum.map(@users, &{&1.username, &1.id}), selected: [@post.user_id]%>
+    <%= error_tag f, :user_id %>
     <%= label f, :published %>
     <div class="checkbox">
       <%= checkbox f, :published, class: "display-none" %>
       <label for="post_published"></label>
     </div>
     <%= error_tag f, :published %>
-  </div>
-  <div class="image-cover">
-    <%= label f, :cover %>
-    <%= text_input f, :cover %>
-    <%= error_tag f, :cover %>
-  </div>
-  <div class="label-group label-array">
     <%= label f, :tags %>
     <%= Slumberingmage.InputHelpers.array_add_button f, :tags %>
     <%= Slumberingmage.InputHelpers.array_input f, :tags %>
     <%= error_tag f, :tags %>
-  </div>
-  <div class="label-group">
-    <%= label f, :views %>
-    <%= number_input f, :views %>
-    <%= error_tag f, :views %>
-  </div>
-  <div class="textarea-group">
-    <%= label f, :body %>
-    <div id="pell_editor" for="#post_body"></div>
-    <%= textarea f, :body %>
-    <%= error_tag f, :body %>
-  </div>
-  <div class="edit-controls">
-  <div>
     <%= submit "Save" %>
   </div>
+  <div>
+    <%= label f, :cover %>
+    <%= text_input f, :cover, placeholder: "cover image" %>
+    <%= error_tag f, :cover %>
+  </div>
+  <%= label f, :body %>
+  <div id="editor"></div>
+  <%= text_input f, :body, class: "display-none" %>
+  <%= error_tag f, :body %>
+  <br/>
+  <span>Views: <%= @post.views %></span>
+  <%# label f, :views %>
+  <%# number_input f, :views %>
+  <%# error_tag f, :views %>
 </div>
-
-
-
-  <script src="https://unpkg.com/pell"></script>
-
 <script>
-    document
-      .querySelectorAll('[data-tiny-editor]')
-      .forEach(editor =>
-        editor.addEventListener('input', e =>
-        document
-        .querySelector(e.target.getAttribute("for")).value = e.target.innerHTML
-      )
-    );
-
-    const post_body = document.getElementById('post_body');
-    const pell_editor = document.getElementById('pell_editor')
-    const editor = pell.init({
-      element: pell_editor,
-      onChange: html => post_body.value = html,
-      defaultParagraphSeparator: 'p',
-    });
-    editor.content.innerHTML = post_body.value
-
+  const editor_elm = document.querySelector('#editor');
+  const post_body_elm = document.querySelector('#post_body');
+  
+  const editor = new Editor({
+    el: editor_elm,
+    height: '500px',
+    initialEditType: 'wysiwyg',
+    previewStyle: 'vertical',
+    initialValue: post_body_elm.value,
+    useCommandShortcut: true,
+    events: {change: ()=>{
+      post_body_elm.value = editor.getMarkdown();
+    }}
+  });
 </script>
-
-
-
-
-
-
-
-  <script>
-  window.onload = () => {
-    const removeElement = ({target}) => {
-    let el = document.getElementById(target.dataset.id);
-    let li = el.parentNode;
-    li.parentNode.removeChild(li);
-  }
-  Array.from(document.querySelectorAll(".remove-form-field"))
-    .forEach(el => {
-      el.onclick = (e) => {
-        removeElement(e);
-      }
-    });
-  Array.from(document.querySelectorAll(".add-form-field"))
-    .forEach(el => {
-      el.onclick = ({target}) => {
-        let container = document.getElementById(target.dataset.container);
-        let index = container.dataset.index;
-        let newRow = target.dataset.prototype;
-        container.insertAdjacentHTML('beforeend', newRow.replace(/__name__/g, index));
-        container.dataset.index = parseInt(container.dataset.index) + 1;
-        container.querySelectorAll('a.remove-form-field').forEach(el => {
-          el.onclick = (e) => {
-            removeElement(e);
-          }
-        })
-      }
-    });
-  }
-</script>
-
 <% end %>

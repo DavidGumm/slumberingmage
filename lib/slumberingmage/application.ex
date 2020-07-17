@@ -2,12 +2,14 @@ defmodule Slumberingmage.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
+  @site_name "DeusExLog"
+  def site_name_data, do: @site_name
 
   use Application
   require Logger
 
   def start(_type, _args) do
-    Logger.debug "Starting Application..."
+    Logger.info("Starting Application #{@site_name}")
     # List all child processes to be supervised
     children = [
       # Start the Ecto repository

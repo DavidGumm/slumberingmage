@@ -1,16 +1,24 @@
 defmodule SlumberingmageWeb.PostController do
   use SlumberingmageWeb, :controller
 
-  alias Slumberingmage.{Posts, Posts.Post}
+  alias Slumberingmage.{Posts, Posts.Post, UserManager.Guardian}
 
   def index(conn, _params) do
     posts = Posts.list_posts()
-    render(conn, "index.html", posts: posts)
+    current_user = Guardian.Plug.current_resource(conn)
+
+    conn
+    |> put_layout(Guardian.layout(current_user))
+    |> render("index.html", posts: posts, current_user: current_user)
   end
 
   def new(conn, _params) do
     changeset = Posts.change_post(%Post{})
-    render(conn, "new.html", changeset: changeset)
+    current_user = Guardian.Plug.current_resource(conn)
+
+    conn
+    |> put_layout(Guardian.layout(current_user))
+    |> render("new.html", changeset: changeset, current_user: current_user)
   end
 
   def create(conn, %{"post" => post_params}) do
@@ -21,19 +29,39 @@ defmodule SlumberingmageWeb.PostController do
         |> redirect(to: Routes.post_path(conn, :show, post))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        current_user = Guardian.Plug.current_resource(conn)
+
+        conn
+        |> put_layout(Guardian.layout(current_user))
+        |> render("new.html", changeset: changeset, current_user: current_user)
     end
   end
 
   def show(conn, %{"id" => id}) do
     post = Posts.get_post!(id)
-    render(conn, "show.html", post: post)
+
+    current_user = Guardian.Plug.current_resource(conn)
+
+    conn
+    |> put_layout(Guardian.layout(current_user))
+    |> render("show.html", post: post, current_user: current_user)
   end
 
   def edit(conn, %{"id" => id}) do
     post = Posts.get_post!(id)
     changeset = Posts.change_post(post)
-    render(conn, "edit.html", post: post, changeset: changeset)
+    users = Slumberingmage.Users.list_users()
+
+    current_user = Guardian.Plug.current_resource(conn)
+
+    conn
+    |> put_layout(Guardian.layout(current_user))
+    |> render("edit.html",
+      post: post,
+      changeset: changeset,
+      users: users,
+      current_user: current_user
+    )
   end
 
   def update(conn, %{"id" => id, "post" => post_params}) do
@@ -46,7 +74,11 @@ defmodule SlumberingmageWeb.PostController do
         |> redirect(to: Routes.post_path(conn, :show, post))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "edit.html", post: post, changeset: changeset)
+        current_user = Guardian.Plug.current_resource(conn)
+
+        conn
+        |> put_layout(Guardian.layout(current_user))
+        |> render("edit.html", post: post, changeset: changeset, current_user: current_user)
     end
   end
 

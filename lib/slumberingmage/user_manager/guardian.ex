@@ -13,4 +13,20 @@ defmodule Slumberingmage.UserManager.Guardian do
   rescue
     Ecto.NoResultsError -> {:error, :resource_not_found}
   end
+
+  def layout(user) do
+    case user do
+      nil ->
+        "app.html"
+
+      user ->
+        if Enum.member?(user.access, "user") && !Enum.member?(user.access, "admin") do
+          "user.html"
+        end
+
+        if Enum.member?(user.access, "admin") do
+          "admin.html"
+        end
+    end
+  end
 end

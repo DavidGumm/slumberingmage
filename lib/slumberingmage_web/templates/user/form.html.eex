@@ -35,35 +35,6 @@
   <%= submit "Save" %>
 </div>
 <script>
-  window.onload = () => {
-    const removeElement = ({target}) => {
-    let el = document.getElementById(target.dataset.id);
-    let li = el.parentNode;
-    li.parentNode.removeChild(li);
-  }
-  Array.from(document.querySelectorAll(".remove-form-field"))
-    .forEach(el => {
-      el.onclick = (e) => {
-        removeElement(e);
-      }
-    });
-  Array.from(document.querySelectorAll(".add-form-field"))
-    .forEach(el => {
-      el.onclick = ({target}) => {
-        let container = document.getElementById(target.dataset.container);
-        let index = container.dataset.index;
-        let newRow = target.dataset.prototype;
-        container.insertAdjacentHTML('beforeend', newRow.replace(/__name__/g, index));
-        container.dataset.index = parseInt(container.dataset.index) + 1;
-        container.querySelectorAll('a.remove-form-field').forEach(el => {
-          el.onclick = (e) => {
-            removeElement(e);
-          }
-        })
-      }
-    });
-  }
-  
   const editor_elm = document.querySelector('#editor');
   const user_bio_elm = document.querySelector('#user_bio');
   

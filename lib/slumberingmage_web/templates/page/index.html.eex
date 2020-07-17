@@ -3,4 +3,14 @@
     {:ok, body}      -> raw(Earmark.as_html!(body))# do something with the `body`
     {:error, reason} -> raw(Earmark.as_html!(reason))# handle the error caused by `reason`
   end %>
+  <script>
+    function hash_change(event){
+      if(window.location.hash != "")
+      {
+        document.querySelector(`h1>a[href="${window.location.hash}"]`).scrollIntoView({ behavior: 'smooth', block: 'start'});
+      }
+    }
+    hash_change();
+    window.onhashchange = hash_change;
+  </script>
 </section>
