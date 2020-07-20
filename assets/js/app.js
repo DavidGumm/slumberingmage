@@ -9,6 +9,7 @@
 //
 import "phoenix_html";
 
+require("../css/app.css");
 
 // Import local files
 //

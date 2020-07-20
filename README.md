@@ -33,6 +33,10 @@
 - [ ] Allow comments to be rejected by admin/poster.
 - [ ] Add post on date for posts and use that for posting date.
 - [ ] Add Tags system.
+- [ ] Update Node.js and npm on Desktop
+- [x] Update Node.js and npm on Laptop
+- [ ] Run 'npm install webpack-cli@3' on desktop.
+- [ ] Fix Users routes not working.
 
 
 # [Refs](#refs)
