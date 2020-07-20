@@ -13,9 +13,9 @@ database_url =
     """
 
 config :deusexlog, Deusexlog.Repo,
-  ssl: true,
+  # ssl: true,
   url: database_url,
-  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10")
+  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "2")
 
 secret_key_base =
   System.get_env("SECRET_KEY_BASE") ||
@@ -25,13 +25,19 @@ secret_key_base =
     """
 
 config :deusexlog, DeusexlogWeb.Endpoint,
-  force_ssl: [hsts: true],
-  url: [host: "black-left-oropendula.gigalixirapp.com", port: 443],
-  http: [:inet6, port: 80],
-  https: [
-    :inet6,
-    port: 443,
-    cipher_suite: :strong
+  http: [
+    port: String.to_integer(System.get_env("PORT") || "4000"),
+    transport_options: [socket_opts: [:inet6]]
   ],
-  http: [:inet6, port: String.to_integer(System.get_env("PORT") || "4000")],
   secret_key_base: secret_key_base
+
+# force_ssl: [hsts: true],
+# url: [host: "black-left-oropendula.gigalixirapp.com", port: 443],
+# http: [:inet6, port: 80],
+# https: [
+#   :inet6,
+#   port: 443,
+#   cipher_suite: :strong
+# ],
+# http: [:inet6, port: String.to_integer(System.get_env("PORT") || "4000")],
+# secret_key_base: secret_key_base
