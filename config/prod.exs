@@ -27,7 +27,7 @@ config :logger, level: :info
 
 config :deusexlog, Deusexlog.Repo,
   adapter: Ecto.Adapters.Postgres,
-  url: "${DATABASE_URL}",
+  url: {:system, "DATABASE_URL"},
   database: "",
   ssl: true,
   # Free tier db only allows 4 connections. Rolling deploys need pool_size*(n+1) connections where n is the number of app replicas.
