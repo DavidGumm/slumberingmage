@@ -25,5 +25,13 @@ secret_key_base =
     """
 
 config :deusexlog, DeusexlogWeb.Endpoint,
+  force_ssl: [hsts: true],
+  url: [host: "black-left-oropendula.gigalixirapp.com", port: 443],
+  http: [:inet6, port: 80],
+  https: [
+    :inet6,
+    port: 443,
+    cipher_suite: :strong
+  ],
   http: [:inet6, port: String.to_integer(System.get_env("PORT") || "4000")],
   secret_key_base: secret_key_base
