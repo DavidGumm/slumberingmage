@@ -11,6 +11,7 @@ use Mix.Config
 # before starting your production server.
 config :deusexlog, DeusexlogWeb.Endpoint,
   load_from_system_env: true,
+  debug_errors: true,
   # Needed for Phoenix 1.2 and 1.4. Doesn't hurt for 1.3.
   http: [port: {:system, "PORT"}],
   # Without this line, your app will not start the web server!
