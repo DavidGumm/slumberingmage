@@ -1,9 +1,9 @@
-defmodule Slumberingmage.MixProject do
+defmodule Deusexlog.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :slumberingmage,
+      app: :deusexlog,
       version: "0.1.0",
       elixir: "~> 1.5",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -19,7 +19,7 @@ defmodule Slumberingmage.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Slumberingmage.Application, []},
+      mod: {Deusexlog.Application, []},
       extra_applications: [:logger, :runtime_tools],
       applications: [
         :phoenix,
@@ -59,6 +59,8 @@ defmodule Slumberingmage.MixProject do
       {:jason, "~> 1.0"},
       {:earmark, "~> 1.4"},
       {:guardian, "~> 2.0"},
+      {:ueberauth, "~> 0.6.3"},
+      {:ueberauth_identity, "0.3.0"},
       {:comeonin, "~> 5.3"}
     ]
   end

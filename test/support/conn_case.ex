@@ -1,4 +1,4 @@
-defmodule SlumberingmageWeb.ConnCase do
+defmodule DeusexlogWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -19,18 +19,18 @@ defmodule SlumberingmageWeb.ConnCase do
     quote do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
-      alias SlumberingmageWeb.Router.Helpers, as: Routes
+      alias DeusexlogWeb.Router.Helpers, as: Routes
 
       # The default endpoint for testing
-      @endpoint SlumberingmageWeb.Endpoint
+      @endpoint DeusexlogWeb.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Slumberingmage.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Deusexlog.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Slumberingmage.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Deusexlog.Repo, {:shared, self()})
     end
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}

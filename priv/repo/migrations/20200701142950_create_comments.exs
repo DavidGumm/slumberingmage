@@ -1,4 +1,4 @@
-defmodule Slumberingmage.Repo.Migrations.CreateComments do
+defmodule Deusexlog.Repo.Migrations.CreateComments do
   use Ecto.Migration
 
   def change do

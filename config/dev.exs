@@ -1,10 +1,10 @@
 use Mix.Config
 
 # Configure your database
-config :slumberingmage, Slumberingmage.Repo,
+config :deusexlog, Deusexlog.Repo,
   username: "postgres",
   password: "Tru9qYluKvM*1dizOuOnVx%Z07GaVhx2",
-  database: "slumberingmage_dev",
+  database: "deusexlog_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
@@ -15,7 +15,7 @@ config :slumberingmage, Slumberingmage.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
-config :slumberingmage, SlumberingmageWeb.Endpoint,
+config :deusexlog, DeusexlogWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
@@ -55,13 +55,13 @@ config :slumberingmage, SlumberingmageWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :slumberingmage, SlumberingmageWeb.Endpoint,
+config :deusexlog, DeusexlogWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/slumberingmage_web/{live,views}/.*(ex)$",
-      ~r"lib/slumberingmage_web/templates/.*(eex)$"
+      ~r"lib/deusexlog_web/{live,views}/.*(ex)$",
+      ~r"lib/deusexlog_web/templates/.*(eex)$"
     ]
   ]
 

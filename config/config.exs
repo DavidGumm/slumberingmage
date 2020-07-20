@@ -7,17 +7,17 @@
 # General application configuration
 use Mix.Config
 
-config :slumberingmage,
-  ecto_repos: [Slumberingmage.Repo]
+config :deusexlog,
+  ecto_repos: [Deusexlog.Repo]
 
 config :phoenix, :template_engines, md: PhoenixMarkdown.Engine
 
 # Configures the endpoint
-config :slumberingmage, SlumberingmageWeb.Endpoint,
+config :deusexlog, DeusexlogWeb.Endpoint,
   http: [port: 4000],
   secret_key_base: "bQPsfvwGyw2nDVdKpWT7R43JC5KfylruQVGrs4WpIx/47NQQPXRXgpXWXpiCI++w",
-  render_errors: [view: SlumberingmageWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Slumberingmage.PubSub, adapter: Phoenix.PubSub.PG2],
+  render_errors: [view: DeusexlogWeb.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: Deusexlog.PubSub, adapter: Phoenix.PubSub.PG2],
   json_library: Jason
 
 # Configures Elixir's Logger
@@ -28,9 +28,9 @@ config :logger,
     [level_lower_than: :debug]
   ]
 
-config :slumberingmage, Slumberingmage.UserManager.Guardian,
+config :deusexlog, Deusexlog.UserManager.Guardian,
   allowed_algos: ["HS512"],
-  issuer: "slumberingmage",
+  issuer: "deusexlog",
   secret_key: "Z/Sd24XcYp4pNdcwiSobyXCLrGZVgrqeI5r5Xi8LDBvXHYzAC9xoNdM4/swEwRNa",
   token_ttl: %{
     "magic" => {30, :minutes},
@@ -40,7 +40,7 @@ config :slumberingmage, Slumberingmage.UserManager.Guardian,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
-config :slumberingmage, Ueberauth,
+config :ueberauth, Ueberauth,
   providers: [
     identity:
       {Ueberauth.Strategy.Identity,

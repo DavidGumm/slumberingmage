@@ -1,0 +1,27 @@
+<section>
+  <%= case File.read("README.md") do
+    {:ok, body}      -> raw(Earmark.as_html!(body))# do something with the `body`
+    {:error, reason} -> raw(Earmark.as_html!(reason))# handle the error caused by `reason`
+  end %>
+  <%= for post <- @posts do %>
+    <article>
+      <div class="article-list-img">
+        <img src="<%= post.cover %>" class="" style="" onerror="this.src='https://picsum.photos/1200/300'" />
+      </div>
+      <h5><%# "By: #{Deusexlog.Users.get_user!(post.user_id).username} #{Enum.join([post.publish_date.year, post.publish_date.month, post.publish_date.day], "-")}"%></h5>
+      <h5><%= post.title %></h5>
+      <%= raw(Earmark.as_html!(String.slice(post.body, 0, 250)))  %>
+      <%= link "...Read More", to: Routes.article_path(@conn, :show, post.slug) %>
+    </article>
+  <% end %>
+  <script>
+    function hash_change(event){
+        if(window.location.hash != "")
+        {
+          document.querySelector(`h1>a[href="${window.location.hash}"]`).scrollIntoView({ behavior: 'smooth', block: 'start'});
+        }
+      }
+      hash_change();
+      window.onhashchange = hash_change;
+  </script>
+</section>

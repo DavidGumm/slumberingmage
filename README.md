@@ -19,24 +19,22 @@
 
 # [Tasks](#tasks)
 - [ ] Build routing tests
-- [ ] Fix user/s page/s
-- [ ] Add ability to lookup posts by author/author pages.
+- [x] Fix Users routes not working.
+  -  Found that current user edit redirects to users.
 - [ ] Finish integrating [Guardian](https://hexdocs.pm/guardian/tutorial-start.html)
-- [ ] Integrate Ueberauth, using Google, Reddit, FB, Linkedin, Twitter
-- [ ] Eliminate passwords in database
+- [ ] Hash passwords in database
 - [x] Test and verify [Earmark](https://hexdocs.pm/earmark/Earmark.html)
   - Earmark not parsing task list/does not support them. [Read more](https://github.com/pragdave/earmark/issues/126)
 - [ ] Fix issue with website restart and cookie not getting recycled properly.
   - Case happens because chrome does not dump the cookie unless all tabs are closed and not just the website tab.
-- [ ] Rename application to "DeusExLog".
+- [x] Rename application to "DeusExLog".
 - [ ] Build in ability to comment on posts.
 - [ ] Allow comments to be rejected by admin/poster.
 - [ ] Add post on date for posts and use that for posting date.
 - [ ] Add Tags system.
-- [ ] Update Node.js and npm on Desktop
+- [x] Update Node.js and npm on Desktop
 - [x] Update Node.js and npm on Laptop
-- [ ] Run 'npm install webpack-cli@3' on desktop.
-- [ ] Fix Users routes not working.
+- [x] Run 'npm install webpack-cli@3' on desktop.
 
 
 # [Refs](#refs)

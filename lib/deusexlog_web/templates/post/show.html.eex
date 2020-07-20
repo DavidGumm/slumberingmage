@@ -1,0 +1,27 @@
+<article>
+  <div class="article-list-img">
+    <img src="<%= @post.cover %>" class="" style="" onerror="this.src='https://picsum.photos/1200/300'" />
+  </div>
+  <div>
+    <strong>Slug:</strong>
+    <%= @post.slug %>
+    <strong>Title:</strong>
+    <%= @post.title %>
+    <strong>Published:</strong>
+    <%= @post.published %>
+    <strong>Publish Date:</strong>
+    <%= @post.publish_date %>
+  </div>
+  <h5><%# "By: #{Deusexlog.Users.get_user!(post.user_id).username} #{Enum.join([post.publish_date.year, post.publish_date.month, post.publish_date.day], "-")}"%></h5>
+  <h5><%= @post.title %></h5>
+  <div>
+    <%= raw(@post.body)  %>
+  </div>
+  <div>
+    <strong>tags:</strong>
+    <%= if @post.tags == nil, do: "", else: Enum.join(@post.tags, ", ") %>
+      <strong>Views:</strong>
+      <%= @post.views %>
+      <span><%= link "Edit", to: Routes.post_path(@conn, :edit, @post) %></span>
+      <span><%= link "Back", to: Routes.post_path(@conn, :index) %></span>
+    </article>

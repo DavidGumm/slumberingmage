@@ -1,2 +1,2 @@
 ExUnit.start()
-Ecto.Adapters.SQL.Sandbox.mode(Slumberingmage.Repo, :manual)
+Ecto.Adapters.SQL.Sandbox.mode(Deusexlog.Repo, :manual)

@@ -1,0 +1,3 @@
+<h1>Edit <%= @user.username %> </h1>
+<%= render "../user/form.html", Map.put(assigns, :action, Routes.current_user_path(@conn, :update, @user)) %>
+<span><%= link "Back", to: Routes.current_user_path(@conn, :show) %></span>

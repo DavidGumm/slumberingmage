@@ -1,4 +1,4 @@
-defmodule Slumberingmage.Repo.Migrations.CreatePosts do
+defmodule Deusexlog.Repo.Migrations.CreatePosts do
   use Ecto.Migration
 
   def change do
@@ -7,6 +7,7 @@ defmodule Slumberingmage.Repo.Migrations.CreatePosts do
       add :title, :string
       add :body, :text
       add :published, :boolean, default: false, null: false
+      add :publish_date, :date, default: nil, null: true
       add :cover, :string
       add :tags, {:array, :string}, null: true
       add :views, :integer
