@@ -19,8 +19,18 @@ defmodule Deusexlog.Posts.Post do
   @doc false
   def changeset(post, attrs) do
     post
-    |> cast(attrs, [:slug, :title, :body, :published, :publish_date, :cover, :views, :tags])
-    |> validate_required([:slug, :title, :body, :published, :cover, :views, :tags])
+    |> cast(attrs, [
+      :slug,
+      :title,
+      :body,
+      :published,
+      :publish_date,
+      :cover,
+      :views,
+      :tags,
+      :user_id
+    ])
+    |> validate_required([:slug, :title, :body, :published, :cover, :views, :tags, :user_id])
     |> unique_constraint(:slug)
     |> unique_constraint(:title)
   end
