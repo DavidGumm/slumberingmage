@@ -54,7 +54,7 @@ posts = [
     cover:
       "https://i.picsum.photos/id/170/1200/300.jpg?hmac=qYQfC2ugH6KSe15XzjvltOomGJhvi1_rkdZP6G_haFY",
     views: 0,
-    user_id: user.id
+    user_id: 2
   },
   %{
     slug: "from-c-sharp-to-elixir",
@@ -67,7 +67,7 @@ posts = [
     cover:
       "https://i.picsum.photos/id/410/1200/300.jpg?hmac=2JQKCsjToD1kSC7AnZESlInV1Hjey0rzGJ-q7wjO2E4",
     views: 0,
-    user_id: user.id
+    user_id: 2
   }
 ]
 
@@ -87,7 +87,7 @@ Logger.debug("")
 new_posts = Deusexlog.Posts.list_posts()
 
 for new_post <- new_posts do
-  Logger.debug("Created post #{new_post.id}")
+  Logger.debug("Created post #{new_post.id} user #{new_post.user_id}")
 end
 
 Logger.debug("")
