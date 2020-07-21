@@ -41,6 +41,7 @@ defmodule DeusexlogWeb do
 
       import DeusexlogWeb.ErrorHelpers
       import DeusexlogWeb.Gettext
+      import Deusexlog.InputHelpers
       alias DeusexlogWeb.Router.Helpers, as: Routes
     end
   end

@@ -6,7 +6,7 @@ defmodule Deusexlog.Repo.Migrations.CreateUsers do
       add :username, :string
       add :password, :string
       add :email, :string
-      add :access, {:array, :string}, null: true
+      add :access, :string, null: true, default: "user"
       add :image, :string
       add :bio, :text
 

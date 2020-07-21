@@ -54,22 +54,9 @@
       "command": "mix deps.compile"
     },
     {
-      "type": "make",
-      "script": ".NOTPARALLEL",
-      "path": "deps/cowlib/",
-      "fileName": "Makefile",
-      "uri": {
-        "$mid": 1,
-        "fsPath": "c:\\Users\\gummd\\source\\repos\\slumberingmage\\deps\\cowlib\\Makefile",
-        "_sep": 1,
-        "path": "/c:/Users/gummd/source/repos/slumberingmage/deps/cowlib/Makefile",
-        "scheme": "file"
-      },
-      "problemMatcher": [
-        "cpp"
-      ],
-      "group": "build",
-      "label": "make: .NOTPARALLEL"
+      "type": "shell",
+      "command": "git push gigalixir master",
+      "label": "deploy"
     }
   ]
 }

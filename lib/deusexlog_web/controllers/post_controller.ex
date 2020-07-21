@@ -50,7 +50,7 @@ defmodule DeusexlogWeb.PostController do
   def edit(conn, %{"id" => id}) do
     post = Posts.get_post!(id)
     changeset = Posts.change_post(post)
-    users = Deusexlog.Users.list_users()
+    users = Deusexlog.Users.list_users() |> Enum.map(&{&1.username, &1.id})
 
     current_user = Guardian.Plug.current_resource(conn)
 

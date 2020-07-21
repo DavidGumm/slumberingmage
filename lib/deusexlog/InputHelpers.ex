@@ -2,56 +2,42 @@ defmodule Deusexlog.InputHelpers do
   use Phoenix.HTML
 
   def array_input(form, field, attr \\ []) do
+    id = Phoenix.HTML.Form.input_id(form, field) <> "_container"
     values = Phoenix.HTML.Form.input_value(form, field) || [""]
-    id = Phoenix.HTML.Form.input_id(form, field)
 
-    content_tag :ul, id: container_id(id), data: [index: Enum.count(values)] do
-      values
-      |> Enum.with_index()
-      |> Enum.map(fn {k, v} ->
-        form_elements(form, field, k, v)
-      end)
+    content_tag :ol, id: id, class: "input_container" do
+      for {value, i} <- Enum.with_index(values) do
+        input_opts = [
+          value: value,
+          id: nil
+        ]
+
+        create_li(form, field, input_opts, index: i)
+      end
     end
   end
 
-  def array_add_button(form, field) do
-    id = Phoenix.HTML.Form.input_id(form, field)
-    # {:safe, content}
-    content =
-      form_elements(form, field, "", "__name__")
-      |> safe_to_string
-
-    # |> html_escape
-    data = [
-      prototype: content,
-      container: container_id(id)
-    ]
-
-    link("", to: "#", data: data, class: "add-form-field")
-  end
-
-  defp form_elements(form, field, k, v) do
+  def create_li(form, field, input_opts \\ [], data \\ []) do
     type = Phoenix.HTML.Form.input_type(form, field)
-    id = Phoenix.HTML.Form.input_id(form, field)
-    new_id = id <> "_#{v}"
-
-    input_opts = [
-      name: new_field_name(form, field),
-      value: k,
-      id: new_id
-    ]
+    name = Phoenix.HTML.Form.input_name(form, field) <> "[]"
+    opts = Keyword.put_new(input_opts, :name, name)
 
     content_tag :li do
       [
-        link("", to: "#", data: [id: new_id], class: "remove-form-field"),
-        apply(Phoenix.HTML.Form, type, [form, field, input_opts])
+        apply(Phoenix.HTML.Form, type, [form, field, opts]),
+        link("Remove", to: "#", data: data, title: "Remove", class: "remove-array-item")
       ]
     end
   end
 
-  defp container_id(id), do: id <> "_container"
+  def array_add_button(form, field) do
+    id = Phoenix.HTML.Form.input_id(form, field) <> "_container"
 
-  defp new_field_name(form, field) do
-    Phoenix.HTML.Form.input_name(form, field) <> "[]"
+    data = [
+      blueprint: create_li(form, field, value: "") |> safe_to_string,
+      container: id
+    ]
+
+    link("Add", to: "#", data: data, title: "Add", class: "add-array-item")
   end
 end

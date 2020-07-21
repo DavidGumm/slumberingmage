@@ -27,8 +27,7 @@
 </div>
 <div class="label-group label-array">
   <%= label f, :access %>:
-  <%= Deusexlog.InputHelpers.array_add_button f, :access %>
-  <%= Deusexlog.InputHelpers.array_input f, :access %>
+  <%= text_input f, :access %>
   <%= error_tag f, :access %>
 </div>
 <div>

@@ -7,7 +7,7 @@ defmodule Deusexlog.Users.User do
     field :password, :string
     field :username, :string
     field :email, :string
-    field :access, {:array, :string}
+    field :access, :string
     field :image, :string
     field :bio, :string
 

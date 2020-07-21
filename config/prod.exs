@@ -10,6 +10,7 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :deusexlog, DeusexlogWeb.Endpoint,
+  force_ssl: [rewrite_on: [:x_forwarded_proto]]
   load_from_system_env: true,
   debug_errors: false,
   # Needed for Phoenix 1.2 and 1.4. Doesn't hurt for 1.3.

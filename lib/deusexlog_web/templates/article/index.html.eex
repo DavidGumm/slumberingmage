@@ -3,9 +3,9 @@
     <div class="article-list-img">
       <img src="<%= post.cover %>" class="" style="" onerror="this.src='https://picsum.photos/1200/300'" />
     </div>
-    <h5><%#"By: #{Deusexlog.Users.get_user!(post.user_id).username} #{Enum.join([post.publish_date.year, post.publish_date.month, post.publish_date.day], "-")}"%></h5>
+    <h5><%= "By: #{Deusexlog.Users.get_user!(post.user_id).username} #{Enum.join([post.publish_date.year, post.publish_date.month, post.publish_date.day], "-")}"%></h5>
     <h5><%= post.title %></h5>
-    <%= raw(Earmark.as_html!(String.slice(post.body, 0, 250)))  %>
+    <%= post.summary %>
     <%= link "...Read More", to: Routes.article_path(@conn, :show, post.slug) %>
   </article>
 <% end %>

@@ -4,6 +4,7 @@ defmodule Deusexlog.Posts.Post do
 
   schema "posts" do
     field :body, :string
+    field :summary, :string
     field :cover, :string, default: ""
     field :tags, {:array, :string}
     field :published, :boolean, default: false
@@ -23,6 +24,7 @@ defmodule Deusexlog.Posts.Post do
       :slug,
       :title,
       :body,
+      :summary,
       :published,
       :publish_date,
       :cover,
@@ -30,7 +32,17 @@ defmodule Deusexlog.Posts.Post do
       :tags,
       :user_id
     ])
-    |> validate_required([:slug, :title, :body, :published, :cover, :views, :tags, :user_id])
+    |> validate_required([
+      :slug,
+      :title,
+      :body,
+      :summary,
+      :published,
+      :cover,
+      :views,
+      :tags,
+      :user_id
+    ])
     |> unique_constraint(:slug)
     |> unique_constraint(:title)
   end

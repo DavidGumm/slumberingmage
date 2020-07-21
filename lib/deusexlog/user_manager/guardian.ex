@@ -20,12 +20,18 @@ defmodule Deusexlog.UserManager.Guardian do
         "app.html"
 
       user ->
-        if Enum.member?(user.access, "user") && !Enum.member?(user.access, "admin") do
-          "user.html"
-        end
+        case user.access do
+          "user" ->
+            "user.html"
 
-        if Enum.member?(user.access, "admin") do
-          "admin.html"
+          "admin" ->
+            "admin.html"
+
+          nil ->
+            "admin.html"
+
+          "" ->
+            "app.html"
         end
     end
   end

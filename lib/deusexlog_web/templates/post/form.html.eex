@@ -6,28 +6,32 @@
 <% end %>
 <div>
   <div>
-    <%= label f, :slug %>
-    <%= text_input f, :slug, placeholder: "slug" %>
-    <%= error_tag f, :slug %>
-    <%= label f, :title %>
-    <%= text_input f, :title, placeholder: "title" %>
-    <%= error_tag f, :title %>
+    <section>
+      <%= label f, :slug %>
+      <%= text_input f, :slug, placeholder: "slug" %>
+      <%= error_tag f, :slug %>
+      <%= label f, :title %>
+      <%= text_input f, :title, placeholder: "title" %>
+      <%= error_tag f, :title %>
+    </section>
     <%= label f, :user_id %>
-    <%= select f, :user_id, Enum.map(@users, &{&1.username, &1.id}), selected: [@post.user_id]%>
+    <%= select f, :user_id, @users, selected: [@post.user_id]%>
     <%= error_tag f, :user_id %>
     <%= label f, :published %>
     <div class="checkbox">
       <%= checkbox f, :published, class: "display-none" %>
       <label for="post_published"></label>
+      <%= error_tag f, :published %>
     </div>
-    <%= error_tag f, :published %>
     <%= label f, :publish_date %>
     <%= text_input f, :publish_date %>
     <%= error_tag f, :publish_date %>
-    <%= label f, :tags %>
-    <%= Deusexlog.InputHelpers.array_add_button f, :tags %>
-    <%= Deusexlog.InputHelpers.array_input f, :tags %>
-    <%= error_tag f, :tags %>
+    <div>
+      <%= label f, :tags %>
+      <%= array_input f, :tags %>
+      <%= array_add_button f, :tags %>
+      <%= error_tag f, :tags %>
+    </div>
     <%= submit "Save" %>
   </div>
   <div>
@@ -35,10 +39,15 @@
     <%= text_input f, :cover, placeholder: "cover image" %>
     <%= error_tag f, :cover %>
   </div>
-  <%= label f, :body %>
-  <div id="editor"></div>
-  <%= text_input f, :body, class: "display-none" %>
-  <%= error_tag f, :body %>
+  <div>
+    <%= label f, :body %>
+    <div id="editor"></div>
+    <%= text_input f, :body, class: "display-none" %>
+    <%= error_tag f, :body %>
+    <%= label f, :summary %>
+    <%= textarea f, :summary, rows: 4, cols: 50, maxlength: 250 %>
+    <%= error_tag f, :summary %>
+  </div>
   <br/>
   <span>Views: <%= @post.views %></span>
   <%# label f, :views %>
@@ -60,5 +69,39 @@
       post_body_elm.value = editor.getHtml();
     }}
   });
+  
+  
+  
+  window.onload = () => {
+    eachSelected(".remove-array-item", (elm) => { elm.onclick = removeItem });
+    eachSelected(".add-array-item", (elm) => { elm.onclick = addItem });
+  }
+  
+  const eachSelected = (selector, fn) => {
+    Array.prototype.forEach.call(document.querySelector(selector, fn))
+  }
+  
+  const removeItem = (event) => {
+    let index = event.target.dataset.index;
+    let li = event.target.parentNode;
+    let ol = li.parentNode;
+    ol.removeChild(li);
+    Array.prototype.forEach.call(ol.children, (x, i) => {
+      x.firstChild.dataset.index = i
+    })
+    ol.dataset,index -= 1;
+  }
+  const addItem = ({target: {dataset}}) => {
+    let container = document.getElementById(dataset.container);
+    let count = container.children.lengh;
+  
+    container.insertAdjacentHTML("beforeend", dataset.blueprint);
+    let newItem = contianer.lastChild;
+    newItem.lastChild.onclick = removeItem;
+  
+    newItem.firstChild.dataset.index = countl
+    newItem.firstChild.id += `_${index}`;
+    newItem.firstChild.focus();
+  }
 </script>
 <% end %>

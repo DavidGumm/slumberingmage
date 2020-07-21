@@ -1,0 +1,474 @@
+wget https://packages.erlang-solutions.com/erlang-solutions_2.0_all.deb && sudo dpkg -i erlang-solutions_2.0_all.deb
+sudo apt-get update
+sudo apt-get install esl-erlang && sudo apt-get install elixir
+sudo apt-get install esl-erlang
+sudo dpkg -i erlang-solutions_2.0_all.deb
+sudo apt-get update
+wget -O- https://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc | sudo apt-key add -
+wget https://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc | sudo apt-key add
+wget https://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc | sudo apt-key add - 
+echo "deb https://packages.erlang-solutions.com/ubuntu focal contrib" | sudo tee /etc/apt/sources.list.d/rabbitmq.list
+sudo apt update
+sudo apt install erlangwget https://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc
+wget https://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc
+sudo apt-key -h
+sudo apt-key add erlang_solutions.asc
+sudo apt remove gpg
+sudo apt-get update -y && sudo apt-get install -y gnupg1
+sudo apt autoremove
+sudo apt-key add erlang_solutions.asc
+sudo apt-get update -y
+sudo apt-get install esl-erlang && sudo apt-get install elixir
+sudo apt-get install esl-erlang
+apt-get update --fix-missing
+sudo apt-get update --fix-missing
+erlang
+elixir
+iex
+ixe
+iex
+ls
+cd /mnt
+ls
+cd c
+cls
+ls
+cd users
+ls
+cd gummd/
+ls
+cd source/
+ls
+cd repos/
+ls
+cd slumberingmage/
+mix local.hex
+erl
+elixir -v
+erl
+sudo apt install erlang-base
+erl
+sudo apt-get install elixir
+cd /bin
+ls
+erl
+cd elixir
+elixir
+erl
+cd..
+elixir
+cd /mnt/c/users/gummd/source/repos/slumberingmage/
+elixir -v
+mix archive.install hex phx_new 1.5.3
+mix phx.server
+mix deps.compile file_system
+mix deps.clean file_system
+mix deps.compile file_system
+cd /mnt/c/users/gummd/source/repos/slumberingmage
+mix deps.compile
+mix deps.compile jose
+cd..
+cd ..
+mix phx.new blog
+mix local.hex
+mix phx.new blog
+mix archive install hex phx_new
+mix phx.new blog
+mix phoenix.new blog
+mix phx.new blog
+mix archive.install https://github.com/phoenixframework/archives/raw/master/phx_new.ez
+nvm 
+nvm
+sudo apt install nodejs
+nodejs -v
+sudo apt install npm
+mix phx.new blog
+mix new blog
+cd blog
+ls
+cd ..
+cls
+rm blog
+rm -r blog
+cd /mnt/c/
+cd Users\gummd\source\repos\slumberingmage
+cd Users/gummd/source/repos/slumberingmage
+cd /home/dave
+
+cd /home/david
+ls
+mkdir source
+ls
+ln -s /home/david/source /mnt/c/Users/gummd/source
+cd source/
+ls
+cd ..
+ls
+ln -s /home/david/source /mnt/c/Users/gummd/source
+cd /mnt/c/Users/gummd/source
+ls
+rm source
+ls
+ln -s /mnt/c/Users/gummd/source /home/david/source
+ls
+cd /home/david
+ls
+cd source/
+ls
+cd source
+ls
+cd ..
+ls
+rm source
+cd source/
+rm source
+ls
+cd ..
+cls
+ls
+rm -f source
+rmdir source/
+ls
+ln -s /mnt/c/Users/gummd /home/david/source
+ls
+cd source/
+cd..
+cd ..
+ls
+]cd ..
+cd ..
+ls
+rm source
+ln -s /mnt/c/Users/gummd /home/david/source/
+ln -s /mnt/c/Users/gummd /home/david/source/repo
+ln -s /mnt/c/Users/gummd/source /home/david
+ls
+cd source
+ls
+cd repos/
+ls
+cd slumberingmage/
+mix phx.server
+mix deps.update jose
+mix compile
+mix deps.clean
+mix deps.update
+mix deps update
+mix deps clean
+mix deps update
+mix deps.compile
+idx
+iex
+clear
+mix compile
+apt get erlang-dev
+apt
+apt install erlang-dev
+sudo apt install erlang-dev
+mix compile
+
+ifconfig
+ip addr show
+sudo mix phx.server
+sudo apt-get install inotify-tools
+mix phx.server
+ufw
+ufw -h
+ufw version
+ufw status
+sudo ufw status
+sudo ufw status verbose
+ip address
+ip -h
+mix phx.server
+mix deps get
+
+mix phx.server
+mix deps get
+mix compile
+mix phx.server
+mix compile
+mix phx.server
+mix compile
+mix phx.server
+mix compile
+mix phx.server
+mix compile
+mix phx.server
+mix compile
+mix phx.server
+mix compile
+mix phx.server
+ls
+rm erlang-solutions_2.0_all.deb 
+rm erlang_solutions.asc
+ls
+re erlang_solutions.asc.1
+rm erlang_solutions.asc.1
+rm erlang_solutions.asc.2
+ls
+cd source
+cd repos/
+cd slumberingmage/
+ls
+clear
+mix phx.gen.html Users User users username:string:unique email:string:unique access:string image:string bio:string
+mix phx.gen.html Posts Post posts slug:string:unique title:string:unique body:text user_id:references:users published:boolean cover:string views:integer
+mix phx.gen.html Comments Comment comments  author:string date:datetime comments:string avatar:string
+mix phx.gen.html Comments Comment comments author:string date:datetime comments:string avatar:string post_id:references:users
+mix ecto.drop
+mix ecto.setup
+mix run priv/repo/seeds.exs
+mix ecto.drop && mix ecto.setup
+iex
+mix compile
+mix phx.server
+mix compile
+mix phx.server
+ls
+cd source/repos//slumberingmage/
+clear
+mix phx.server
+clear
+mix ecto.drop
+mix ecto.setup
+clear
+mix phx.server
+clear
+mix phx.server
+mix run priv/repo/seeds.exs
+mix compile
+mix run priv/repo/seeds.exs
+clear
+mix phx.server
+cls
+clear
+mix dep.get
+mix deps.get
+mix phx.server
+mix complie
+mix compile
+mix phx.server
+mix compile
+mix phx.server
+cd source/repos/slumberingmage/
+mix phx.server
+mix run priv/repo/seeds.exs
+mix phx.server
+cd source/repos/slumberingmage/
+mix phx.server
+cd assets/
+npm install --save @toast-ui/editor
+cd..
+cd ..
+mix phx.server
+mix compile
+mix phx.server
+mix compile
+mix phx.server
+mix compile
+mix phx.server
+mix compile
+mix phx.server
+mix compile
+mix phx.server
+cd assets/
+npm compile
+npm install compile
+cd ..
+mix phx.server
+cd source/repos/slumberingmage/
+mix phx.server
+mix deps.get
+mix phx.server
+mix deps.get
+mix phx.server
+\
+mix phx.server
+mix compile
+mix phx.server
+mix compile
+mix phx.server
+mix compile
+mix phx.server
+iex
+mix phx.server
+clear
+mix phx.server
+cast(:boolean, true)
+iex
+cast(:boolean, true)
+mix phx.server
+cd source/repos/slumberingmage/
+mix phx.server
+cd assets/
+clear
+npm run deploy
+npm -v
+npm install npm@latest -g
+sudo npm install npm@latest -g
+npm -v
+command -v nvm
+nvm
+sudo npm cache clean -f
+sudo npm install -g n
+sudo n stable
+cd ..
+xs ass
+cd ass
+cd assets/
+npm run deploy
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+nvm
+
+nvm
+nvm -lts
+nvm install -lts
+sudo nvm install --lts
+nvm install --lts
+node
+node -v
+npm run deploy
+npm install webpack-cli@3
+npm audit
+npm run deploy
+cleat
+clear
+npm run deploy
+clear && npm run deploy
+cd ..
+clear
+mix mix phx.server
+mix phx.server
+clear 
+mix phx.server
+clear && mix phx.server
+clear
+mix phx.routes
+clear && mix phx.server
+mix phx.server
+mix phx.routs
+mix phx.routes
+mix phx.server
+clear && mix phx.server
+mix phx.server
+hostname
+mix phx.server prod
+cd s
+cd source/repos/slumberingmage/
+mix phx.server
+mix ecto.setup
+mix phx.server
+mix ecto.drop
+mix phx.server
+mix ecto.setup
+mix ecto.drop
+mix ecto.setup
+mix ecto.drop
+mix ecto.setup
+clear && mix phx.server
+mix ecto.drop
+mix ecto.setup
+clear && mix phx.server
+mix ecto.drop
+mix ecto.setup
+clear && mix phx.server
+mix deps.get
+mix deps compilew
+mix deps compile
+mix deps.compile
+sudo apt-get update
+py
+pip
+sudo apt-get install -y python3 python3-pip git-core curl
+pip3 install gigalixir --user
+echo 'export PATH=~/.local/bin:$PATH' >> ~/.bash_profile
+source ~/.bash_profile
+gigalixir --help
+gigalixir login
+gigalixir account
+APP_NAME=$(deusexlog create)
+$APP_NAME
+$APP_NAME=deusexlog
+$APP_NAME="deusexlog"
+APP_NAME=$(gigalixir create)
+gigalixir apps
+git remote -v
+echo "elixir_version=1.10.3" > elixir_buildpack.config
+echo "erlang_version=22.3" >> elixir_buildpack.config
+echo "node_version=12.16.3" > phoenix_static_buildpack.config
+git add elixir_buildpack.config phoenix_static_buildpack.config
+git commit -m "set elixir, erlang, and node version"
+git config --global user.email "gumm.david@gmail.com"
+git config --global user.name "David Gumm"
+git commit -m "set elixir, erlang, and node version"
+gigalixir pg:create --free
+gigalixir pg
+gigalixir config
+git push gigalixir master
+curl https://$APP_NAME.gigalixirapp.com/
+$APP_NAME
+gigalixir open
+gigalixir config
+git push gigalixir master
+cd ..
+git clone https://github.com/gigalixir/gigalixir-getting-started.git
+cd slumberingmage/
+git push gigalixir master
+gigalixir ps -a black-left-oropendula
+gigalixir logs -a black-left-oropendula
+clear
+gigalixir logs -a black-left-oropendula
+mix deps.get
+mix compile
+SECRET_KEY_BASE="$(mix phx.gen.secret)" MIX_ENV=prod DATABASE_URL="postgresql://user:pass@lo
+
+
+
+
+SECRET_KEY_BASE="$(mix phx.gen.secret)" MIX_ENV=prod DATABASE_URL="postgresql://user:pass@localhost:5432/foo" PORT=4000 mix phx.server
+SECRET_KEY_BASE="$(mix phx.gen.secret)" MIX_ENV=prod DATABASE_URL="postgresql://user:postgres@localhost:5432/Tru9qYluKvM*1dizOuOnVx%Z07GaVhx2" PORT=4000 mix phx.server
+SECRET_KEY_BASE="$(mix phx.gen.secret)" MIX_ENV=prod DATABASE_URL="postgresql://user:postgres@localhost:5432/deusexlog_dev" PORT=4000 mix phx.server
+git push gigalixir master
+curl https://black-left-oropendula.gigalixirapp.com/
+clear && gigalixir ps -a black-left-oropendula
+clear && gigalixir logs -a black-left-oropendula
+gigalixir run mix run priv/repo/seeds.exs
+gigalixir logs
+gigalixir run mix ecto.setup
+clear && gigalixir logs
+clear
+git push gigalixir master
+gigalixir run mix run priv/repo/seeds.exs
+gigalixir run mix ecto.setup
+gigalixir run mix ecto.migrate
+gigalixir ps
+gigalixir logs
+gigalixir run mix ecto.create
+gigalixir logs
+gigalixir config
+gigalixir run mix ecto.migrate
+gigalixir ps:migrate
+gigalixir account:ssh_keys:add "$(cat ~/.ssh/id_rsa.pub)"
+gigalixir ps
+gigalixir ps:migrate
+gigalixir account:ssh_keys:add --hel
+cd ~/
+ls
+cd 
+cd ~/source/repos/slumberingmage
+gigalixir pg
+gigalixir ps:migrate
+ssh-keygen -o -b 4096 -t rsa
+gigalixir account:ssh_keys:add "$(cat ~/.ssh/id_rsa.pub)"
+gigalixir ps:migrate
+gigalixir run mix run priv/repo/seeds.exs
+gigalixir logs
+clear && mix phx.server
+git push gigalixir master
+mix ecto.drop
+mix ecto.setup
+clear && mix phx.server
+git push gigalixir master
+cd source/repos/slumberingmage/
+clear && mix phx.server

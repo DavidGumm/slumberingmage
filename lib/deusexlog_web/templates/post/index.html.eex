@@ -1,14 +1,13 @@
-<h1>Listing Posts</h1>
+<h1>Posts</h1>
 <table>
   <thead>
     <tr>
       <th>Slug</th>
       <th>Title</th>
-      <th>Body</th>
       <th>Published</th>
       <th>Publish Date</th>
-      <th>Cover</th>
       <th>Views</th>
+      <th>summary</th>
       <th></th>
     </tr>
   </thead>
@@ -17,11 +16,10 @@
       <tr>
         <td><%= post.slug %></td>
         <td><%= post.title %></td>
-        <td><%= post.body %></td>
         <td><%= post.published %></td>
         <td><%= post.publish_date %></td>
-        <td><%= post.cover %></td>
         <td><%= post.views %></td>
+        <td><%= post.summary %></td>
         <td>
           <span><%= link "Show", to: Routes.post_path(@conn, :show, post) %></span>
           <span><%= link "Edit", to: Routes.post_path(@conn, :edit, post) %></span>

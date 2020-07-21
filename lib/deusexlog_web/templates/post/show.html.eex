@@ -12,8 +12,10 @@
     <strong>Publish Date:</strong>
     <%= @post.publish_date %>
   </div>
-  <h5><%# "By: #{Deusexlog.Users.get_user!(post.user_id).username} #{Enum.join([post.publish_date.year, post.publish_date.month, post.publish_date.day], "-")}"%></h5>
+  <h5><%= "By: #{Deusexlog.Users.get_user(@post.user_id).username} #{Enum.join([@post.publish_date.year, @post.publish_date.month, @post.publish_date.day], "-")}"%></h5>
   <h5><%= @post.title %></h5>
+  <strong>Summary:</strong>
+  <%= @post.summary %>
   <div>
     <%= raw(@post.body)  %>
   </div>

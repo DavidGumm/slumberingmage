@@ -5,6 +5,7 @@ defmodule Deusexlog.Repo.Migrations.CreatePosts do
     create table(:posts) do
       add :slug, :string
       add :title, :string
+      add :summary, :text
       add :body, :text
       add :published, :boolean, default: false, null: false
       add :publish_date, :date, default: nil, null: true
