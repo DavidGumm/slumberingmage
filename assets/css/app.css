@@ -430,11 +430,12 @@ ul{
 } */
 
 header {
-    background: url(/images/banner.png) var(--color-1);
+    background: url(/images/banner-small.png) var(--color-1);
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center center;
     width: 100%;
-    height: calc(25vw);
+    height: 55px;
 }
 
 .title {
@@ -588,4 +589,12 @@ article:last-of-type {
     text-overflow: ellipsis;
     -o-text-overflow: ellipsis;
     max-width: 250px;
+}
+
+.link-button {
+  color: -webkit-link;
+  cursor: pointer;
+  background-color: transparent;
+  text-decoration: none;
+  color: var(--color-8);
 }
