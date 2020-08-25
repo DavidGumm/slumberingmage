@@ -8,7 +8,7 @@
     </h5>
   </div>
   <div class="article-body">
-    <%= raw(Earmark.as_html!(@post.body)) %>
+    <%= raw(@post.body) %>
   </div>
   <h6>tags: <%= for tag <- @post.tags, do: " #{tag}," %></h6>
   </article>

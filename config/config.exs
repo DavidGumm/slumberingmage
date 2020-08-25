@@ -37,11 +37,16 @@ config :deusexlog, Deusexlog.UserManager.Guardian,
     "access" => {1, :days}
   }
 
+config :deusexlog, DeusexlogWeb.Authentication,
+  issuer: "deusexlog",
+  secret_key: "Z/Sd24XcYp4pNdcwiSobyXCLrGZVgrqeI5r5Xi8LDBvXHYzAC9xoNdM4/swEwRNa"
+
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
 config :ueberauth, Ueberauth,
   providers: [
+    google: {Ueberauth.Strategy.Google, []},
     identity:
       {Ueberauth.Strategy.Identity,
        [

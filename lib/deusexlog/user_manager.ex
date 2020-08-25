@@ -4,8 +4,8 @@ defmodule Deusexlog.UserManager do
   """
 
   import Ecto.Query, warn: false
-  alias Deusexlog.Repo
-  alias Deusexlog.UserManager.User
+  import Ecto.Query, only: [from: 2]
+  alias Deusexlog.{Repo, UserManager.User}
 
   @doc """
   Returns the list of users.
@@ -52,7 +52,7 @@ defmodule Deusexlog.UserManager do
   """
   def get_user_by_name!(name), do: Repo.get_by!(User, username: name)
 
-    @doc """
+  @doc """
   Gets a single user.
 
   Raises `Ecto.NoResultsError` if the User does not exist.
@@ -133,27 +133,43 @@ defmodule Deusexlog.UserManager do
     User.changeset(user, %{})
   end
 
-  import Ecto.Query, only: [from: 2]
-  require Logger
+  @doc """
+  Returns an truple for verifying user password.
+  Either {:ok, user} or {:error, :invalid_credentials}
 
-  def authenticate_user(email, plain_text_password) do
-    timestamp = DateTime.utc_now()
+  ## Examples
 
-    Logger.info "#{timestamp}: Login atempt by #{email}"
-    user = Repo.get_by(User, email: email)
-    case user do
-      nil ->
-        Logger.info "#{timestamp}: #{email} not found"
-        {:error, :invalid_credentials}
-      user ->
-        Logger.info "#{timestamp}: #{email} found"
-        if user.password == plain_text_password do
-          Logger.info "#{timestamp}: #{email} password correct"
-          {:ok, user}
-        else
-          Logger.info "#{timestamp}: #{email} bad password"
-          {:error, :invalid_credentials}
-      end
-    end
+      iex> authenticate_user(user)
+      %{source: %{:ok, user}}
+
+  """
+  @spec authenticate_user(String.t(), String.t()) :: map()
+  def authenticate_user(email, password) do
+    user = Deusexlog.UserManager.get_user_by_email!(email)
+    authenticate(user, password)
+  end
+require Logger
+  defp authenticate(%User{} = user, password) do
+    authenticate(
+      user,
+      password,
+      Bcrypt.verify_pass(password, user.password)
+    )
+  end
+
+  defp authenticate(nil, password) do
+    authenticate(nil, password, Bcrypt.no_user_verify())
+  end
+
+  defp authenticate(%User{} = user, _password, true) do
+    {:ok, user}
+  end
+
+  defp authenticate(_user, _password, false) do
+    {:error, "Access is denied due to invalid credentials."}
+  end
+
+  defp authenticate(_user, _password, error) do
+    {:error, "Access is denied due to invalid credentials."}
   end
 end

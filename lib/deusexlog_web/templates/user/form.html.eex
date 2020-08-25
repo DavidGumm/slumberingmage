@@ -4,39 +4,30 @@
     <p>Oops, something went wrong! Please check the errors below.</p>
   </div>
 <% end %>
-<div class="label-group">
   <%= label f, :username %>
   <%= text_input f, :username %>
   <%= error_tag f, :username %>
-</div>
-<div class="label-group">
+  <%= label f, :password %>
+  <%= text_input f, :password %>
+  <%= error_tag f, :password %>
   <%= label f, :email %>
   <%= text_input f, :email %>
   <%= error_tag f, :email %>
-</div>
-<div class="label-group">
   <%= label f, :image %>
   <%= text_input f, :image %>
   <%= error_tag f, :image %>
-</div>
-<div class="textarea-group">
   <%= label f, :bio %>
   <div id="editor"></div>
   <%= text_input f, :bio, class: "display-none" %>
   <%= error_tag f, :bio %>
-</div>
-<div class="label-group label-array">
   <%= label f, :access %>:
   <%= text_input f, :access %>
   <%= error_tag f, :access %>
-</div>
-<div>
   <%= submit "Save" %>
-</div>
 <script>
   const editor_elm = document.querySelector('#editor');
   const user_bio_elm = document.querySelector('#user_bio');
-  
+
   const editor = new Editor({
     el: editor_elm,
     height: '500px',
@@ -45,7 +36,7 @@
     initialValue: user_bio_elm.value,
     useCommandShortcut: true,
     events: {change: ()=>{
-      user_bio_elm.value = editor.getMarkdown();
+      user_bio_elm.value = editor.getHtml();
     }}
   });
 </script>

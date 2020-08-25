@@ -17,7 +17,7 @@ config :deusexlog, DeusexlogWeb.Endpoint,
   http: [port: {:system, "PORT"}],
   # Without this line, your app will not start the web server!
   server: true,
-  secret_key_base: "${SECRET_KEY_BASE}",
+  secret_key_base: System.get_env("SECRET_KEY_BASE"),
   url: [host: "${APP_NAME}.davidgumm.com", port: 443],
   cache_static_manifest: "priv/static/cache_manifest.json",
   # to bust cache during hot upgrades
@@ -25,6 +25,10 @@ config :deusexlog, DeusexlogWeb.Endpoint,
 
 # Do not print debug messages in production
 config :logger, level: :info
+
+config :deusexlog, DeusexlogWeb.Authentication,
+  issuer: "deusexlog",
+  secret_key: System.get_env("GUARDIAN_SECRET_KEY")
 
 config :deusexlog, Deusexlog.Repo,
   adapter: Ecto.Adapters.Postgres,

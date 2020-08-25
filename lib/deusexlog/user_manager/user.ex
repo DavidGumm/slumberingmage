@@ -1,7 +1,7 @@
 defmodule Deusexlog.UserManager.User do
   use Ecto.Schema
   import Ecto.Changeset
-  alias Comeonin
+  require Logger
 
   schema "users" do
     field :password, :string
@@ -20,15 +20,12 @@ defmodule Deusexlog.UserManager.User do
     |> validate_required([:username, :password])
     |> unique_constraint(:username)
     |> unique_constraint(:email)
-    |> put_password_hash()
+    |> put_pass_hash()
   end
 
-  defp put_password_hash(
-         %Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset
-       ) do
-    # change(changeset, password: Comeonin.add_hash(password))
-    change(changeset, password: password)
+  defp put_pass_hash(%Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset) do
+    change(changeset, password: Bcrypt.hash_pwd_salt(password))
   end
 
-  defp put_password_hash(changeset), do: changeset
+  defp put_pass_hash(changeset), do: changeset
 end

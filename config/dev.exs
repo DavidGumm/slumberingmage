@@ -3,7 +3,7 @@ use Mix.Config
 # Configure your database
 config :deusexlog, Deusexlog.Repo,
   username: "postgres",
-  password: "Tru9qYluKvM*1dizOuOnVx%Z07GaVhx2",
+  password: "postgres",
   database: "deusexlog_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,

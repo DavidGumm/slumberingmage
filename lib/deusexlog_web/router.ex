@@ -21,6 +21,10 @@ defmodule DeusexlogWeb.Router do
     plug Guardian.Plug.EnsureAuthenticated
   end
 
+  pipeline :guardian do
+    plug DeusexlogWeb.Authentication.Pipeline
+  end
+
   # Maybe logged in scope
   scope "/", DeusexlogWeb do
     pipe_through [:browser, :auth]
@@ -38,14 +42,24 @@ defmodule DeusexlogWeb.Router do
   scope "/", DeusexlogWeb do
     pipe_through [:browser, :auth, :ensure_auth]
 
-    get "/admin", AdminController, :index
-    # get "/user", CurrentUserController, :show
-    # patch "/user/:id", CurrentUserController, :update
-    # put "/user/:id", CurrentUserController, :update
-    # get "/user/edit", CurrentUserController, :edit
+    # get "/admin", AdminController, :index
+    get "/user", CurrentUserController, :show
+    patch "/user/:id", CurrentUserController, :update
+    put "/user/:id", CurrentUserController, :update
+    get "/user/edit", CurrentUserController, :edit
     resources "/users", UserController
     resources "/comments", CommentController
     resources "/posts", PostController
+  end
+
+  scope "/", DeusexlogWeb do
+    pipe_through [:browser, :guardian]
+
+    get "/admin", AdminController, :index
+
+    get "/register", RegistrationController, :new
+    post "/register", RegistrationController, :create
+    get "/login", SessionController, :new
   end
 
   # Other scopes may use custom stacks.

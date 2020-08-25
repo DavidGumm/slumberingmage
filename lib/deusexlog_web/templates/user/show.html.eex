@@ -18,7 +18,7 @@
   </li>
   <li>
     <strong>Bio:</strong>
-    <%= @user.bio %>
+    <%= raw @user.bio %>
   </li>
 </ul>
 <span><%= link "Edit", to: Routes.user_path(@conn, :edit, @user) %></span>

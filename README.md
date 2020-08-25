@@ -6,10 +6,9 @@ deusexlog
 - [Refs](#refs)
 
 # [Links](#links)
-
 * [http://localhost:4000](http://localhost:4000)
 * [Repo for website](https://github.com/DavidGumm/slumberingmage)
-* [Live site](http://www.50.dyn.deathmetalstan.com:4000/)
+* [Live site](https://www.davidgumm.com/)
 * [Elixir Libhunt](https://elixir.libhunt.com/)
 * [Guardian](https://hexdocs.pm/guardian/tutorial-start.html)
 * [Cloak](https://hexdocs.pm/cloak/1.0.2/install.html#content)
@@ -37,11 +36,9 @@ deusexlog
 - [x] Update Node.js and npm on Laptop
 - [x] Run 'npm install webpack-cli@3' on desktop.
 
-
 # [Refs](#refs)
-
-  * [building-a-web-framework-from-scratch-in-elixir](https://codewords.recurse.com/issues/five/building-a-web-framework-from-scratch-in-elixir)
-  * [Authentication in Elixir Web Applications with Ueberauth and Guardian: Part 1](https://thoughtbot.com/blog/authentication-in-elixir-web-applications-with-guardian-part-1)
-  * [Authentication in Elixir Web Applications with Ueberauth and Guardian: Part 2](https://thoughtbot.com/blog/authentication-in-elixir-web-applications-with-guardian-part-2)
-  * [Authentication in Elixir Web Applications with Ueberauth and Guardian: Part 3](https://thoughtbot.com/blog/authentication-in-elixir-web-applications-with-guardian-part-3)
-  * [Authentication in Elixir Web Applications with Ueberauth and Guardian: Part 4](https://thoughtbot.com/blog/authentication-in-elixir-web-applications-with-ueberauth-and-guardian-part-4)
+* [building-a-web-framework-from-scratch-in-elixir](https://codewords.recurse.com/issues/five/building-a-web-framework-from-scratch-in-elixir)
+* [Authentication in Elixir Web Applications with Ueberauth and Guardian: Part 1](https://thoughtbot.com/blog/authentication-in-elixir-web-applications-with-guardian-part-1)
+* [Authentication in Elixir Web Applications with Ueberauth and Guardian: Part 2](https://thoughtbot.com/blog/authentication-in-elixir-web-applications-with-guardian-part-2)
+* [Authentication in Elixir Web Applications with Ueberauth and Guardian: Part 3](https://thoughtbot.com/blog/authentication-in-elixir-web-applications-with-guardian-part-3)
+* [Authentication in Elixir Web Applications with Ueberauth and Guardian: Part 4](https://thoughtbot.com/blog/authentication-in-elixir-web-applications-with-ueberauth-and-guardian-part-4)

@@ -73,12 +73,12 @@
   
   
   window.onload = () => {
-    eachSelected(".remove-array-item", (elm) => { elm.onclick = removeItem });
-    eachSelected(".add-array-item", (elm) => { elm.onclick = addItem });
+    document.querySelectorAll(".remove-array-item").forEach((elm)=>{ elm.onclick = removeItem });
+    document.querySelectorAll(".add-array-item").forEach((elm)=>{ elm.onclick = addItem });
   }
   
   const eachSelected = (selector, fn) => {
-    Array.prototype.forEach.call(document.querySelector(selector, fn))
+    Array.prototype.forEach.call(document.querySelector(selector), fn)
   }
   
   const removeItem = (event) => {
@@ -86,7 +86,7 @@
     let li = event.target.parentNode;
     let ol = li.parentNode;
     ol.removeChild(li);
-    Array.prototype.forEach.call(ol.children, (x, i) => {
+    ol.children.forEach((x, i) => {
       x.firstChild.dataset.index = i
     })
     ol.dataset,index -= 1;
@@ -96,7 +96,7 @@
     let count = container.children.lengh;
   
     container.insertAdjacentHTML("beforeend", dataset.blueprint);
-    let newItem = contianer.lastChild;
+    let newItem = container.lastChild;
     newItem.lastChild.onclick = removeItem;
   
     newItem.firstChild.dataset.index = countl

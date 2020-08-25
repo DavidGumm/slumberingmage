@@ -1,3 +1,9 @@
+<style>
+  header {
+    background: url(/images/banner.png) var(--color-1);
+    height: calc(25vw);
+  }
+</style>
 <section>
   <%= for post <- @posts do %>
     <article>

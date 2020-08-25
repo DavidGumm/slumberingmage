@@ -25,7 +25,11 @@ defmodule Deusexlog.InputHelpers do
     content_tag :li do
       [
         apply(Phoenix.HTML.Form, type, [form, field, opts]),
-        link("Remove", to: "#", data: data, title: "Remove", class: "remove-array-item")
+        content_tag(:span, "Remove",
+          data: data,
+          title: "Remove",
+          class: "remove-array-item link-button"
+        )
       ]
     end
   end
@@ -38,6 +42,10 @@ defmodule Deusexlog.InputHelpers do
       container: id
     ]
 
-    link("Add", to: "#", data: data, title: "Add", class: "add-array-item")
+    content_tag(:span, "Add",
+      data: data,
+      title: "Add",
+      class: "add-array-item link-button"
+    )
   end
 end

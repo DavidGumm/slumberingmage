@@ -4,9 +4,8 @@ defmodule Deusexlog.Users do
   """
 
   import Ecto.Query, warn: false
-  alias Deusexlog.Repo
-
-  alias Deusexlog.Users.User
+  alias Deusexlog.{Repo, Users.User}
+  require Logger
 
   @doc """
   Returns the list of users.

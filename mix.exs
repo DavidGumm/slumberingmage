@@ -60,8 +60,9 @@ defmodule Deusexlog.MixProject do
       {:earmark, "~> 1.4"},
       {:guardian, "~> 2.0"},
       {:ueberauth, "~> 0.6.3"},
-      {:ueberauth_identity, "0.3.0"},
-      {:comeonin, "~> 5.3"}
+      {:ueberauth_google, "~> 0.8"},
+      {:ueberauth_identity, "~> 0.3.0"},
+      {:bcrypt_elixir, "~> 2.2"}
     ]
   end
 
@@ -75,7 +76,8 @@ defmodule Deusexlog.MixProject do
     [
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      test: ["ecto.create --quiet", "ecto.migrate", "test"]
+      test: ["ecto.create --quiet", "ecto.migrate", "test"],
+      dev: ["mix phx.server"]
     ]
   end
 end
