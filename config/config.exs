@@ -21,7 +21,7 @@ secret_key_base =
     """
 
 secret_key =
-  System.get_env("SECRET_KEY") ||
+  System.get_env("GUARDIAN_SECRET_KEY") ||
     raise """
     environment variable SECRET_KEY is missing.
     You can generate one by calling: mix phx.gen.secret
