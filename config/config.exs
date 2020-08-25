@@ -54,7 +54,8 @@ config :deusexlog, Deusexlog.UserManager.Guardian,
 
 config :deusexlog, DeusexlogWeb.Authentication,
   issuer: "deusexlog",
-  secret_key: secret_key, #"Z/Sd24XcYp4pNdcwiSobyXCLrGZVgrqeI5r5Xi8LDBvXHYzAC9xoNdM4/swEwRNa"
+  secret_key: secret_key
+  #"Z/Sd24XcYp4pNdcwiSobyXCLrGZVgrqeI5r5Xi8LDBvXHYzAC9xoNdM4/swEwRNa"
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
