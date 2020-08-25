@@ -16,7 +16,6 @@ database_url =
 config :deusexlog, Deusexlog.Repo,
   # ssl: true,
   url: database_url,
-  config :deusexlog, Deusexlog.Repo,
   pool_size: String.to_integer(System.get_env("POOL_SIZE") || 2)
 
 secret_key_base =
