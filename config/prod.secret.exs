@@ -15,6 +15,12 @@ database_url =
 config :deusexlog, Deusexlog.Repo,
   # ssl: true,
   url: database_url,
+  config :deusexlog, Deusexlog.Repo,
+
+  username: System.get_env("DATABASE_USERNAME"),
+  password: System.get_env("DATABASE_PASSWORD"),
+  database: System.get_env("DATABASE"),
+
   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "2")
 
 secret_key_base =

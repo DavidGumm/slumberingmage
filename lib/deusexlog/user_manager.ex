@@ -150,11 +150,16 @@ defmodule Deusexlog.UserManager do
   end
 require Logger
   defp authenticate(%User{} = user, password) do
+    if(user.password == password) do
+      Deusexlog.UserManager.update_user(user, %{:password => user.password})
+      authenticate(Deusexlog.UserManager.get_user_by_email!(user.email), password)
+    else
     authenticate(
       user,
       password,
       Bcrypt.verify_pass(password, user.password)
     )
+    end
   end
 
   defp authenticate(nil, password) do
