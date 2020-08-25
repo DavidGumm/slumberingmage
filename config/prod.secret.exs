@@ -16,12 +16,7 @@ config :deusexlog, Deusexlog.Repo,
   # ssl: true,
   url: database_url,
   config :deusexlog, Deusexlog.Repo,
-
-  username: System.get_env("DATABASE_USERNAME"),
-  password: System.get_env("DATABASE_PASSWORD"),
-  database: System.get_env("DATABASE"),
-
-  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "2")
+  pool_size: String.to_integer(System.get_env("POOL_SIZE") || 2)
 
 secret_key_base =
   System.get_env("SECRET_KEY_BASE") ||
@@ -32,7 +27,7 @@ secret_key_base =
 
 config :deusexlog, DeusexlogWeb.Endpoint,
   http: [
-    port: String.to_integer(System.get_env("PORT") || "4000"),
+    port: String.to_integer(System.get_env("PORT") || 4000),
     transport_options: [socket_opts: [:inet6]]
   ],
   secret_key_base: secret_key_base

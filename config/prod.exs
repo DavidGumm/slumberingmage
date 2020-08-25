@@ -14,7 +14,7 @@ config :deusexlog, DeusexlogWeb.Endpoint,
   load_from_system_env: true,
   debug_errors: false,
   # Needed for Phoenix 1.2 and 1.4. Doesn't hurt for 1.3.
-  http: [port: {:system, "PORT"}],
+  http: [port: System.get_env("PORT")],
   # Without this line, your app will not start the web server!
   server: true,
   secret_key_base: System.get_env("SECRET_KEY_BASE"),
@@ -32,7 +32,7 @@ config :deusexlog, DeusexlogWeb.Authentication,
 
 config :deusexlog, Deusexlog.Repo,
   adapter: Ecto.Adapters.Postgres,
-  url: {:system, "DATABASE_URL"},
+  url: System.get_env("DATABASE_URL"),
   database: "",
   ssl: true,
   # Free tier db only allows 4 connections. Rolling deploys need pool_size*(n+1) connections where n is the number of app replicas.
