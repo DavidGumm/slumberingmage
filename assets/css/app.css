@@ -15,7 +15,7 @@
   /* background text color */
   --color-2: #000;
   /* secondary text color */
-  --color-3: grey;
+  --color-3: #808080;
   /* input border color*/
   --color-4: #ffffffaa;
   /* input, code block background color, scrollbar color */
@@ -32,7 +32,7 @@
   --color-10: #3d5d99;
   /* scrollbar hover color */
   --color-11: #6283c0;
-  --color-12: teal;
+  --color-12: #008080;
 }
 
 
@@ -43,9 +43,9 @@
   /* primary text color */
     --color-1: #363636;
   /* background color */
-    --color-2: white;
+    --color-2: #fff;
   /* secondary text color */
-    --color-3: teal;
+    --color-3: #008080;
   /* input border color*/
     --color-4: #96bf00ab;
   /* input, code block background color, scrollbar color */
